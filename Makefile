@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: christian <christian@student.42.fr>        +#+  +:+       +#+         #
+#    By: ccamargo <ccamargo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/20 19:31:21 by mcarecho          #+#    #+#              #
-#    Updated: 2023/06/26 21:53:41 by christian        ###   ########.fr        #
+#    Updated: 2023/06/26 22:44:14 by ccamargo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,9 @@ HEADER			= cub3D.h
 HEADER_PATH		= $(addprefix $(HEADER_DIR), $(HEADER))
 
 SRC_DIR			= ./src/
-SRC				=	main.c
+SRC				=	main.c \
+					errors/throw_err.c \
+					validation/input_validation.c
 
 SRC_PATH		= $(addprefix $(SRC_DIR), $(SRC))
 

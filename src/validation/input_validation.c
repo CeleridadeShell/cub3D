@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   input_validation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamargo <ccamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 19:37:56 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/06/26 22:43:05 by ccamargo         ###   ########.fr       */
+/*   Created: 2023/06/26 22:41:00 by ccamargo          #+#    #+#             */
+/*   Updated: 2023/06/26 22:41:34 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include <cub3D.h>
 
-// Native libraries
+int	is_param_valid(int argc, char **argv)
+{
+	char	*substr;
 
-# include <stdlib.h>
-# include <math.h>
-
-// Non-native libraries
-
-# include <libft.h>
-# include <ft_printf.h>
-# include <get_next_line.h>
-
-// Define
-
-# define NUM_PARAM 1
-# define WRONG_FILE 2
-
-// Structs
-
-// Functions
-void	throw_err(int err);
-int		is_param_valid(int argc, char **argv);
-
-#endif
+	if (argc != 2)
+	{
+		throw_err(NUM_PARAM);
+		return (0);
+	}
+	substr = ft_substr(argv[1], ft_strlen(argv[1]) - 4, 4);
+	if (ft_strncmp(".cub", substr, 4))
+	{
+		throw_err(WRONG_FILE);
+		ft_freethis(&substr, NULL);
+		return (0);
+	}
+	ft_freethis(&substr, NULL);
+	return (1);
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christian <christian@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ccamargo <ccamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:39:48 by christian         #+#    #+#             */
-/*   Updated: 2023/06/26 21:50:33 by christian        ###   ########.fr       */
+/*   Updated: 2023/06/26 22:44:41 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	argc++;
-	(void) argv;
-	ft_printf("Teste\n");
+	if (!is_param_valid(argc, argv))
+		exit(0);
 	return (0);
 }
