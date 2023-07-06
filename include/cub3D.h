@@ -6,7 +6,7 @@
 /*   By: ccamargo <ccamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:37:56 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/07/05 22:42:34 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/07/06 17:57:29 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 typedef struct s_scene
 {
 	int		fd;
-	char	**file_lines;
+	char	**scene_lines;
 	char	*no;
 	char	*so;
 	char	*we;
@@ -61,8 +61,9 @@ typedef struct s_scene
 /* Functions */
 void	throw_err(int err);
 int		is_param_valid(int argc, char **argv);
-int		is_scene_valid(char *map_path);
-void	initialize_scene(t_scene *scene, char *map_path);
+int		is_scene_valid(char *map_path, t_scene *scene);
+int		initialize_scene(t_scene *scene, char *map_path);
+int		feed_scene_textures(t_scene *scene);
 void	close_scene(t_scene *scene);
 
 #endif

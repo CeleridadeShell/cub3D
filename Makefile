@@ -6,7 +6,7 @@
 #    By: ccamargo <ccamargo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/20 19:31:21 by mcarecho          #+#    #+#              #
-#    Updated: 2023/07/05 22:34:41 by ccamargo         ###   ########.fr        #
+#    Updated: 2023/07/06 18:04:31 by ccamargo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC				=	main.c \
 					validation/input_validation.c \
 					validation/scene_validation.c \
 					initialization/scene_initialization.c \
+					initialization/textures_initialization.c \
 					close_utils/close_scene.c
 
 SRC_PATH		= $(addprefix $(SRC_DIR), $(SRC))
