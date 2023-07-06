@@ -6,7 +6,7 @@
 #    By: ccamargo <ccamargo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/20 19:31:21 by mcarecho          #+#    #+#              #
-#    Updated: 2023/06/26 22:44:14 by ccamargo         ###   ########.fr        #
+#    Updated: 2023/07/05 22:34:41 by ccamargo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,10 @@ HEADER_PATH		= $(addprefix $(HEADER_DIR), $(HEADER))
 SRC_DIR			= ./src/
 SRC				=	main.c \
 					errors/throw_err.c \
-					validation/input_validation.c
+					validation/input_validation.c \
+					validation/scene_validation.c \
+					initialization/scene_initialization.c \
+					close_utils/close_scene.c
 
 SRC_PATH		= $(addprefix $(SRC_DIR), $(SRC))
 
