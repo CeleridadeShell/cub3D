@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene_initialization.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccamargo <ccamargo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 21:28:33 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/07/06 19:00:45 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/08/28 17:42:58 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ int	initialize_scene(t_scene *scene, char *map_path)
 	scene->so = NULL;
 	scene->we = NULL;
 	scene->ea = NULL;
-	scene->f = -1;
-	scene->c = -1;
+	scene->f = 0;
+	scene->c = 0;
 	scene->map = NULL;
 	return (1);
 }

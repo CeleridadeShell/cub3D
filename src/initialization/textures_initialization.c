@@ -3,30 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   textures_initialization.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccamargo <ccamargo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 17:56:45 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/07/06 19:20:30 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:24:54 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-int	feed_scene_textures(t_scene *scene)
+int	feed_scene_floor_and_celling(t_scene *scene)
 {
-	int		i;
+	size_t		i;
 
 	i = 0;
-	while (i < 4)
+	while (scene->scene_lines[i])
+	{
+		if (ft_strncmp(scene->scene_lines[i], "F", 1) == 0)
+			scene->f = parse_color(ft_substr(scene->scene_lines[i], \
+			ft_strrchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + \
+			1, ft_strlen(scene->scene_lines[i])));
+		if (ft_strncmp(scene->scene_lines[i], "C", 1) == 0)
+			scene->c = parse_color(ft_substr(scene->scene_lines[i], \
+			ft_strrchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + \
+			1, ft_strlen(scene->scene_lines[i])));
+		i++;
+	}
+	if (scene->f == 0 || scene->c == 0)
+	{
+		throw_err(COLORS_INVALID);
+		return (0);
+	}
+	return (1);
+}
+
+int	feed_scene_textures(t_scene *scene)
+{
+	size_t		i;
+
+	i = 0;
+	while (scene->scene_lines[i])
 	{
 		if (ft_strncmp(scene->scene_lines[i], "NO", 2) == 0)
-			scene->no = ft_substr(scene->scene_lines[0], ft_strrchr(scene->scene_lines[0], ' ') - scene->scene_lines[0] + 1, ft_strlen(scene->scene_lines[0]));
+			scene->no = ft_substr(scene->scene_lines[i], \
+			ft_strrchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + \
+			1, ft_strlen(scene->scene_lines[i]));
 		if (ft_strncmp(scene->scene_lines[i], "SO", 2) == 0)
-			scene->so = ft_substr(scene->scene_lines[1], ft_strrchr(scene->scene_lines[1], ' ') - scene->scene_lines[1] + 1, ft_strlen(scene->scene_lines[1]));
+			scene->so = ft_substr(scene->scene_lines[i], \
+			ft_strrchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + \
+			1, ft_strlen(scene->scene_lines[i]));
 		if (ft_strncmp(scene->scene_lines[i], "WE", 2) == 0)
-			scene->we = ft_substr(scene->scene_lines[2], ft_strrchr(scene->scene_lines[2], ' ') - scene->scene_lines[2] + 1, ft_strlen(scene->scene_lines[2]));
+			scene->we = ft_substr(scene->scene_lines[i], \
+			ft_strrchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + \
+			1, ft_strlen(scene->scene_lines[i]));
 		if (ft_strncmp(scene->scene_lines[i], "EA", 2) == 0)
-			scene->ea = ft_substr(scene->scene_lines[3], ft_strrchr(scene->scene_lines[3], ' ') - scene->scene_lines[3] + 1, ft_strlen(scene->scene_lines[3]));
+			scene->ea = ft_substr(scene->scene_lines[i], \
+			ft_strrchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + \
+			1, ft_strlen(scene->scene_lines[i]));
 		i++;
 	}
 	if (!scene->no || !scene->so || !scene->we || !scene->ea)

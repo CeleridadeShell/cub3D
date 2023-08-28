@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/20 19:31:21 by mcarecho          #+#    #+#              #
-#    Updated: 2023/08/24 03:19:58 by mcarecho         ###   ########.fr        #
+#    Updated: 2023/08/28 18:16:39 by ccamargo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,13 +27,14 @@ SRC				=	main.c \
 					validation/scene_validation.c \
 					initialization/scene_initialization.c \
 					initialization/textures_initialization.c \
+					initialization/rgb_funcs.c \
 					close_utils/close_scene.c
 
 SRC_PATH		= $(addprefix $(SRC_DIR), $(SRC))
 
 CC				= gcc
 CFLAGS			= -Wall -Wextra -Werror
-CLINK			= -lft -lm
+MLXFLAGS		= -lmlx -lX11 -lXext
 
 BIN				= ./bin/
 BINARY_OUT		= $(addprefix $(BIN), $(NAME))
@@ -44,7 +45,7 @@ $(BINARY_OUT): $(SRC_PATH) $(HEADER_PATH)
 	@ $(MAKE) -C $(LIBFT_DIR)
 	@ cp $(LIBFT) $(NAME)
 	@ mkdir -p $(BIN)
-	@ $(CC) $(CFLAGS) $(SRC_PATH) -I $(HEADER_DIR) -I $(HEADER_LIBFT) -L $(LIBFT_DIR) $(CLINK) -o $(NAME) -Lmlx_Linux -lmlx_Linux -L ./minilibx -Imlx_Linux -lXext -lX11 -lm -lz 
+	@ $(CC) $(CFLAGS) $(SRC_PATH) -I $(HEADER_DIR) -I $(HEADER_LIBFT) -L $(LIBFT_DIR) -lft $(MLXFLAGS) -o $(NAME)
 	@ mv $(NAME) $(BIN)
 	@ echo "$(NAME) compiled successfully!"
 
@@ -64,7 +65,7 @@ leaks:
 	@ $(MAKE) -C $(LIBFT_DIR)
 	@ cp $(LIBFT) $(NAME)
 	@ mkdir -p $(BIN)
-	@ $(CC) $(CFLAGS) -g $(SRC_PATH) -I $(HEADER_DIR) -I $(HEADER_LIBFT) -L $(LIBFT_DIR) $(CLINK) -o $(NAME) -Lmlx_Linux -lmlx_Linux -L ./minilibx -Imlx_Linux -lXext -lX11 -lm -lz 
+	@ $(CC) $(CFLAGS) $(SRC_PATH) -I $(HEADER_DIR) -I $(HEADER_LIBFT) -L $(LIBFT_DIR) -lft $(MLXFLAGS) -o $(NAME)
 	@ mv $(NAME) $(BIN)
 	@ echo "$(NAME) with leak check option compiled successfully!"
 
@@ -72,7 +73,7 @@ simple:
 	@ $(MAKE) -C $(LIBFT_DIR)
 	@ cp $(LIBFT) $(NAME)
 	@ mkdir -p $(BIN)
-	@ $(CC) -g $(SRC_PATH) -I $(HEADER_DIR) -I $(HEADER_LIBFT) -L $(LIBFT_DIR) $(CLINK) -o $(NAME) -Lmlx_Linux -lmlx_Linux -L ./minilibx -Imlx_Linux -lXext -lX11 -lm -lz 
+	@ $(CC) $(CFLAGS) $(SRC_PATH) -I $(HEADER_DIR) -I $(HEADER_LIBFT) -L $(LIBFT_DIR) -lft $(MLXFLAGS) -o $(NAME)
 	@ mv $(NAME) $(BIN)
 	@ echo "$(NAME) without compile flags compiled successfully!"
 

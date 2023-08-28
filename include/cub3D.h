@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccamargo <ccamargo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:37:56 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/07/06 17:57:29 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:22:36 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,35 +35,46 @@
 # include <ft_printf.h>
 # include <get_next_line.h>
 
+/* MiniLibX */
+
+# include <mlx.h>
+
 /* Define */
 
 # define NUM_PARAM 1
 # define WRONG_FILE 2
 # define MAP_NONEXISTENT 3
 # define TEXTURES_INVALID 4
+# define COLORS_INVALID 5
 # define VALID_CHARS "10NSEW"
 
 /* Structs */
 
 typedef struct s_scene
 {
-	int		fd;
-	char	**scene_lines;
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	int		f;
-	int		c;
-	char	**map;
+	int					fd;
+	char				**scene_lines;
+	char				*no;
+	char				*so;
+	char				*we;
+	char				*ea;
+	unsigned int		f;
+	unsigned int		c;
+	char				**map;
 }			t_scene;
 
 /* Functions */
-void	throw_err(int err);
-int		is_param_valid(int argc, char **argv);
-int		is_scene_valid(char *map_path, t_scene *scene);
-int		initialize_scene(t_scene *scene, char *map_path);
-int		feed_scene_textures(t_scene *scene);
-void	close_scene(t_scene *scene);
+void			throw_err(int err);
+int				is_param_valid(int argc, char **argv);
+int				is_scene_valid(char *map_path, t_scene *scene);
+int				initialize_scene(t_scene *scene, char *map_path);
+int				feed_scene_textures(t_scene *scene);
+int				feed_scene_floor_and_celling(t_scene *scene);
+void			close_scene(t_scene *scene);
+int				create_rgb(int r, int g, int b);
+int				get_r(int rgb);
+int				get_g(int rgb);
+int				get_b(int rgb);
+unsigned int	parse_color(char *RGB);
 
 #endif

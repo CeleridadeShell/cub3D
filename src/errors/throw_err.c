@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   throw_err.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccamargo <ccamargo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 22:42:11 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/07/06 19:14:52 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/08/28 17:30:08 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
+
+static void	print_model_colors(void)
+{
+	ft_printf("One or more colors could not be parsed correctly! \n\n");
+	ft_printf("Colors must be specified as follows:\n");
+	ft_printf("F 255,255,0\n");
+	ft_printf("C 0,255,255\n");
+}
 
 static void	print_model_textures(void)
 {
@@ -35,4 +43,6 @@ void	throw_err(int err)
 to open!\n");
 	if (err == TEXTURES_INVALID)
 		print_model_textures();
+	if (err == COLORS_INVALID)
+		print_model_colors();
 }

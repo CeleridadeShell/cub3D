@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   input_validation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccamargo <ccamargo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 22:41:00 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/06/26 22:41:34 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/08/28 16:41:45 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
+
+/*
+	Only one parameter is valid. Not more, not less.
+	Said parameter must have a .cub extension.
+*/
 
 int	is_param_valid(int argc, char **argv)
 {
