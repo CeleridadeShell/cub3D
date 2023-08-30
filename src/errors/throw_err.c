@@ -6,7 +6,7 @@
 /*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 22:42:11 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/08/30 16:22:55 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/08/30 17:09:11 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,6 @@ to open!\n");
 		print_model_textures();
 	if (err == COLORS_INVALID)
 		print_model_colors();
+	if (err == MAP_NOT_LAST)
+		ft_printf("The map must come last on the scene file!\n");
 }

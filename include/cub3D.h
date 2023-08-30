@@ -6,7 +6,7 @@
 /*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:37:56 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/08/28 18:22:36 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/08/30 17:31:31 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@
 # define MAP_NONEXISTENT 3
 # define TEXTURES_INVALID 4
 # define COLORS_INVALID 5
-# define VALID_CHARS "10NSEW"
+# define MAP_NOT_LAST 6
+# define VALID_CHARS "10NSEW "
 
 /* Structs */
 
@@ -76,5 +77,6 @@ int				get_r(int rgb);
 int				get_g(int rgb);
 int				get_b(int rgb);
 unsigned int	parse_color(char *RGB);
+int				feed_scene_map(t_scene *scene);
 
 #endif
