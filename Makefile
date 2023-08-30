@@ -6,7 +6,7 @@
 #    By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/20 19:31:21 by mcarecho          #+#    #+#              #
-#    Updated: 2023/08/28 18:16:39 by ccamargo         ###   ########.fr        #
+#    Updated: 2023/08/29 22:52:12 by ccamargo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC				=	main.c \
 					initialization/scene_initialization.c \
 					initialization/textures_initialization.c \
 					initialization/rgb_funcs.c \
+					initialization/rgb_utils.c \
 					close_utils/close_scene.c
 
 SRC_PATH		= $(addprefix $(SRC_DIR), $(SRC))

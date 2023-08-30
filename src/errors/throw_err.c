@@ -6,7 +6,7 @@
 /*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 22:42:11 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/08/28 17:30:08 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/08/29 18:58:14 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static void	print_model_colors(void)
 {
-	ft_printf("One or more colors could not be parsed correctly! \n\n");
+	ft_printf("One or more colors could not be parsed correctly!\n");
+	ft_printf("Only values from 0 to 255 are valid!\n");
 	ft_printf("Colors must be specified as follows:\n");
 	ft_printf("F 255,255,0\n");
 	ft_printf("C 0,255,255\n");
