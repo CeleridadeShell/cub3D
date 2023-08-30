@@ -6,7 +6,7 @@
 /*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 22:42:11 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/08/29 18:58:14 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/08/30 16:22:55 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static void	print_model_colors(void)
 {
 	ft_printf("One or more colors could not be parsed correctly!\n");
 	ft_printf("Only values from 0 to 255 are valid!\n");
+	ft_printf("Only one color for the floor and one for the celling is \
+valid!\n");
 	ft_printf("Colors must be specified as follows:\n");
 	ft_printf("F 255,255,0\n");
 	ft_printf("C 0,255,255\n");
@@ -24,7 +26,8 @@ static void	print_model_colors(void)
 static void	print_model_textures(void)
 {
 	ft_printf("One or more textures could not be found on specified path, \
-some file could not be open or another error was found on scene file!\n\n");
+some file could not be open or there is more than one texture per \
+position!\n\n");
 	ft_printf("Textures must be specified as follows:\n");
 	ft_printf("NO ./path_to_the_north_texture\n");
 	ft_printf("SO ./path_to_the_south_texture\n");
