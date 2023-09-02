@@ -6,7 +6,7 @@
 /*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:38:44 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/09/02 14:00:31 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/09/02 14:33:27 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,16 @@ int	feed_scene_map(t_scene *scene)
 	if (!is_map_walled(scene))
 	{
 		throw_err(MAP_NOT_WALLED);
+		return (0);
+	}
+	if (!are_map_chars_valid(scene))
+	{
+		throw_err(MAP_CHARS_NOT_VALID);
+		return (0);
+	}
+	if (!are_map_players_valid(scene))
+	{
+		throw_err(MAP_PLAYERS_NOT_VALID);
 		return (0);
 	}
 	return (1);

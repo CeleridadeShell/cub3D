@@ -6,7 +6,7 @@
 /*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 14:00:17 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/09/02 14:05:34 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/09/02 14:35:17 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,51 @@ int	is_map_walled(t_scene *scene)
 	if (!check_horizontal_walls(scene, map_len))
 		return (0);
 	if (!check_vertical_walls(scene, map_len))
+		return (0);
+	return (1);
+}
+
+int	are_map_chars_valid(t_scene *scene)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (scene->map[i])
+	{
+		j = 0;
+		while (scene->map[i][j])
+		{
+			if (ft_strchr(VALID_CHARS, scene->map[i][j]))
+				j++;
+			else
+				return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	are_map_players_valid(t_scene *scene)
+{
+	int	i;
+	int	j;
+	int	valid_player_char_count;
+
+	i = 0;
+	valid_player_char_count = 0;
+	while (scene->map[i])
+	{
+		j = 0;
+		while (scene->map[i][j])
+		{
+			if (ft_strchr(VALID_PLAYER_CHARS, scene->map[i][j]))
+				valid_player_char_count++;
+			j++;
+		}
+		i++;
+	}
+	if (valid_player_char_count > 1)
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:37:56 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/09/02 14:00:49 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/09/02 14:34:41 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@
 # define COLORS_INVALID 5
 # define MAP_NOT_LAST 6
 # define MAP_NOT_WALLED 7
+# define MAP_CHARS_NOT_VALID 8
+# define MAP_PLAYERS_NOT_VALID 9
 # define VALID_CHARS "10NSEW "
+# define VALID_PLAYER_CHARS "NSEW"
 
 /* Structs */
 
@@ -80,5 +83,7 @@ int				get_b(int rgb);
 unsigned int	parse_color(char *RGB);
 int				feed_scene_map(t_scene *scene);
 int				is_map_walled(t_scene *scene);
+int				are_map_chars_valid(t_scene *scene);
+int				are_map_players_valid(t_scene *scene);
 
 #endif
