@@ -6,7 +6,7 @@
 /*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:38:44 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/08/30 19:02:52 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/09/02 12:58:01 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,38 +31,42 @@ static int	is_map_last_element(t_scene *scene)
 	return (1);
 }
 
+static void	find_beginning_of_map(t_scene *scene, int *i, int *j)
+{
+	int	found_beginning_of_map;
+
+	found_beginning_of_map = 0;
+	while (scene->scene_lines[*i])
+	{
+		*j = 0;
+		while (scene->scene_lines[*i][*j])
+		{
+			if (!ft_strchr(VALID_CHARS, scene->scene_lines[*i][*j]))
+				break ;
+			else
+			{
+				(*j)++;
+				if (!scene->scene_lines[*i][*j])
+					found_beginning_of_map = 1;
+			}
+		}
+		if (found_beginning_of_map == 1)
+			break ;
+		(*i)++;
+	}
+}
+
 static void	extract_map(t_scene *scene)
 {
 	int	i;
 	int	j;
-	int	flag;
 
 	i = 0;
-	j = 0;
-	flag = 0;
-	while (scene->scene_lines[i])
-	{
-		while (scene->scene_lines[i][j])
-		{
-			if (!ft_strchr(VALID_CHARS, scene->scene_lines[i][j]))
-			{
-				break ;
-			}
-			else
-			{
-				j++;
-				if (!scene->scene_lines[i][j])
-					flag = 1;
-			}
-		}
-		if (flag == 1)
-			break ;
-		i++;
-	}
+	find_beginning_of_map(scene, &i, &j);
 	j = i;
 	while (scene->scene_lines[j])
 		j++;
-	scene->map = (char **) ft_calloc(j - i, sizeof(char *));
+	scene->map = (char **) ft_calloc(j - i + 1, sizeof(char *));
 	j = 0;
 	while (scene->scene_lines[i])
 	{
@@ -70,12 +74,6 @@ static void	extract_map(t_scene *scene)
 		j++;
 		i++;
 	}
-/* 	i = 0;
-	while (scene->map[i])
-	{
-		ft_printf("%s\n", scene->map[i]);
-		i++;
-	} */
 }
 
 int	feed_scene_map(t_scene *scene)

@@ -6,13 +6,13 @@
 /*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 21:46:33 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/08/30 19:06:03 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/09/02 12:54:13 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void	close_scene(t_scene *scene)
+static void	free_scene_lines(t_scene *scene)
 {
 	int	i;
 
@@ -27,6 +27,12 @@ void	close_scene(t_scene *scene)
 		free(scene->scene_lines);
 		scene->scene_lines = NULL;
 	}
+}
+
+static void	free_map(t_scene *scene)
+{
+	int	i;
+
 	i = 0;
 	if (scene->map)
 	{
@@ -38,6 +44,12 @@ void	close_scene(t_scene *scene)
 		free(scene->map);
 		scene->map = NULL;
 	}
+}
+
+void	close_scene(t_scene *scene)
+{
+	free_scene_lines(scene);
+	free_map(scene);
 	ft_freethis(&scene->no, NULL);
 	ft_freethis(&scene->so, NULL);
 	ft_freethis(&scene->we, NULL);
