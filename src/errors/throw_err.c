@@ -6,7 +6,7 @@
 /*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 22:42:11 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/09/02 14:33:13 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/09/07 19:23:17 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,8 @@ to open!\n");
 		ft_printf("The map must only contain valid characters! (01NWSE )\n");
 	if (err == MAP_PLAYERS_NOT_VALID)
 		ft_printf("The map must only contain one player starting position!\n");
+	if (err == MINILIB_FAILED_WINDOW)
+		ft_printf("Minilib's windows failed to load!\n");
+	if (err == MINILIB_FAILED_SPRITE)
+		ft_printf("Minilib failed to load sprites\n");
 }

@@ -6,7 +6,7 @@
 #    By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/20 19:31:21 by mcarecho          #+#    #+#              #
-#    Updated: 2023/09/02 14:00:58 by ccamargo         ###   ########.fr        #
+#    Updated: 2023/09/07 19:32:42 by ccamargo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,14 @@ SRC				=	main.c \
 					validation/input_validation.c \
 					validation/scene_validation.c \
 					initialization/scene_initialization.c \
+					initialization/game_initialization.c \
 					initialization/feed_textures_and_colors.c \
 					initialization/rgb_funcs.c \
 					initialization/rgb_utils.c \
 					initialization/feed_map.c \
 					initialization/feed_map_2.c \
-					close_utils/close_scene.c
+					close_utils/close_scene.c \
+					close_utils/close_game.c
 
 SRC_PATH		= $(addprefix $(SRC_DIR), $(SRC))
 

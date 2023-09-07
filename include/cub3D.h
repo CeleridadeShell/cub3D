@@ -6,7 +6,7 @@
 /*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:37:56 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/09/02 14:34:41 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/09/07 19:35:28 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@
 # define MAP_NOT_WALLED 7
 # define MAP_CHARS_NOT_VALID 8
 # define MAP_PLAYERS_NOT_VALID 9
+# define MINILIB_FAILED_WINDOW 10
+# define MINILIB_FAILED_SPRITE 11
 # define VALID_CHARS "10NSEW "
 # define VALID_PLAYER_CHARS "NSEW"
 
@@ -66,7 +68,28 @@ typedef struct s_scene
 	unsigned int		f;
 	unsigned int		c;
 	char				**map;
-}			t_scene;
+}				t_scene;
+
+typedef struct s_img
+{
+	void	*sprite_img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+	int		width;
+	int		height;
+}				t_img;
+
+typedef struct s_game
+{
+	void	*mlx;
+	void	*win;
+	t_img	no;
+	t_img	so;
+	t_img	we;
+	t_img	ea;
+}				t_game;
 
 /* Functions */
 void			throw_err(int err);
@@ -85,5 +108,7 @@ int				feed_scene_map(t_scene *scene);
 int				is_map_walled(t_scene *scene);
 int				are_map_chars_valid(t_scene *scene);
 int				are_map_players_valid(t_scene *scene);
+void			init_game(t_game *game);
+void			close_game(t_game *game);
 
 #endif
