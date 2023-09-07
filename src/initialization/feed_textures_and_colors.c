@@ -1,16 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   textures_initialization.c                          :+:      :+:    :+:   */
+/*   feed_textures_and_colors.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 17:56:45 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/08/30 16:27:07 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/09/07 06:01:37 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
+
+/*
+Check if provided texture files exist in specified path.
+*/
+
+static int	check_textures_exist(t_scene *scene)
+{
+	scene->fd = open(scene->no, O_RDONLY);
+	if (scene->fd < 0)
+		return (0);
+	close(scene->fd);
+	scene->fd = open(scene->so, O_RDONLY);
+	if (scene->fd < 0)
+		return (0);
+	close(scene->fd);
+	scene->fd = open(scene->we, O_RDONLY);
+	if (scene->fd < 0)
+		return (0);
+	close(scene->fd);
+	scene->fd = open(scene->ea, O_RDONLY);
+	if (scene->fd < 0)
+		return (0);
+	close(scene->fd);
+	return (1);
+}
 
 /*
 Scans for colors for floor and celling in .cub scene file.
@@ -117,6 +142,11 @@ int	feed_scene_textures(t_scene *scene)
 		i++;
 	}
 	if (!scene->no || !scene->so || !scene->we || !scene->ea)
+	{
+		throw_err(TEXTURES_INVALID);
+		return (0);
+	}
+	if (!check_textures_exist(scene))
 	{
 		throw_err(TEXTURES_INVALID);
 		return (0);

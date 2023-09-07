@@ -1,15 +1,15 @@
 
-SO ./path_to_the_south_texture
+SO    ./resources/assets/greenbrick.xpm
 
 
 
 
-EA       ./path_to_the_east_texture
+EA ./resources/assets/yellowbrick.xpm
 
 F         230,100,0
-WE                         ./path_to_the_west_texture
+WE   ./resources/assets/redbrick.xpm
 C     225,30,84
-NO ./path_to_the_north_texture
+NO       ./resources/assets/bluebrick.xpm
 
 1111111111111111111111111
 1000000000110000000000001
