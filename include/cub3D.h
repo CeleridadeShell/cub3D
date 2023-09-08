@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:37:56 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/09/07 19:35:28 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/09/08 18:46:41 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@
 
 /* Structs */
 
+
 typedef struct s_scene
 {
 	int					fd;
@@ -69,6 +70,25 @@ typedef struct s_scene
 	unsigned int		c;
 	char				**map;
 }				t_scene;
+
+typedef struct s_input_keys
+{
+	int		w;
+	int		a;
+	int		s;
+	int		d;
+	int		left;
+	int		right;
+	int		mouse;
+}				t_input_keys;
+
+typedef struct s_player
+{
+	float	x;
+	float	y;
+}				t_player;
+
+
 
 typedef struct s_img
 {
@@ -89,6 +109,9 @@ typedef struct s_game
 	t_img	so;
 	t_img	we;
 	t_img	ea;
+	t_scene scene;
+	t_input_keys input_keys;
+	t_player player;
 }				t_game;
 
 /* Functions */

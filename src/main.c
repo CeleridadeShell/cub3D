@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:39:48 by christian         #+#    #+#             */
-/*   Updated: 2023/09/07 19:34:18 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/09/08 18:52:12 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
+
+
+void drawplayer(void *mlx, void *win, float x, float y)
+{
+	mlx_pixel_put(mlx, win, x, y, 0xFFFFFF);
+}
 
 int	img_init(char *file_path, void *mlx, t_img *img)
 {
@@ -22,6 +28,12 @@ int	img_init(char *file_path, void *mlx, t_img *img)
 	}
 	img->addr = mlx_get_data_addr(img->sprite_img, &img->bpp, &img->line_len, &img->endian);
 	return (1);
+}
+
+
+void trace_path()
+{
+	drawplayer(game.mlx, game.win, game.player.x, game.player.y);
 }
 
 void	run_game(t_scene *scene)
@@ -38,7 +50,7 @@ void	run_game(t_scene *scene)
 	}
 	if (!img_init(scene->no, game.mlx, &game.no) || !img_init(scene->so, game.mlx, &game.so) || !img_init(scene->we, game.mlx, &game.we) || !img_init(scene->ea, game.mlx, &game.ea))
 		return ;
-	sleep(5);
+	mlx_loop_hook(mlx, trace_path, &game);
 	close_game(&game);
 }
 
