@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:37:56 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/09/08 18:46:41 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/07 21:49:52 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,26 @@
 # define MINILIB_FAILED_SPRITE 11
 # define VALID_CHARS "10NSEW "
 # define VALID_PLAYER_CHARS "NSEW"
+# define MAP_X 800
+# define MAP_Y 600
+# define MAP_S 64 // tamanho da sprite
+# define KEY_ESC 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_UP 65362
+# define KEY_LEFT 65361
+# define KEY_DOWN 65364
+# define KEY_RIGHT 65363
 
 /* Structs */
+
+typedef enum e_bool
+{
+	TRUE = 1,
+	FALSE = 0
+}	t_bool;
 
 
 typedef struct s_scene
@@ -69,23 +87,37 @@ typedef struct s_scene
 	unsigned int		f;
 	unsigned int		c;
 	char				**map;
+	t_player 			*player;
 }				t_scene;
+
+typedef struct s_sprite
+{
+	t_img	*ea;
+	t_img	*no;
+	t_img	*so;
+	t_img	*we;
+}			t_sprite;
 
 typedef struct s_input_keys
 {
-	int		w;
-	int		a;
-	int		s;
-	int		d;
-	int		left;
-	int		right;
-	int		mouse;
+	t_bool		w;
+	t_bool		a;
+	t_bool		s;
+	t_bool		d;
+	t_bool		left;
+	t_bool		right;
 }				t_input_keys;
 
 typedef struct s_player
 {
-	float	x;
-	float	y;
+	int	x; // quadrante basico
+	int	y; // quadrante basico
+	float px; // posicao real do player
+	float py; // posicao real do player
+	float pdx; // angulo de rotacao da camera
+	float pdy; // angulo de rotacao da camera
+	float pa; // posicao do angulo, radiano
+
 }				t_player;
 
 
@@ -99,19 +131,18 @@ typedef struct s_img
 	int		endian;
 	int		width;
 	int		height;
+	int		color;
 }				t_img;
 
 typedef struct s_game
 {
+	t_img *img;
 	void	*mlx;
 	void	*win;
-	t_img	no;
-	t_img	so;
-	t_img	we;
-	t_img	ea;
-	t_scene scene;
+	t_sprite *sprites;
+	t_scene *scene;
 	t_input_keys input_keys;
-	t_player player;
+	t_player *player;
 }				t_game;
 
 /* Functions */
@@ -131,7 +162,11 @@ int				feed_scene_map(t_scene *scene);
 int				is_map_walled(t_scene *scene);
 int				are_map_chars_valid(t_scene *scene);
 int				are_map_players_valid(t_scene *scene);
-void			init_game(t_game *game);
+void			init_game(t_game *game, t_scene *scene);
 void			close_game(t_game *game);
+float 			deg_to_rad(float deg);
+float 			fix_ang(float ang);
+int key_pressed(int keycode, t_game *game);
+int key_release(int keycode, t_game *game);
 
 #endif

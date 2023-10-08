@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/20 19:31:21 by mcarecho          #+#    #+#              #
-#    Updated: 2023/09/07 19:32:42 by ccamargo         ###   ########.fr        #
+#    Updated: 2023/10/07 20:56:15 by mcarecho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ SRC				=	main.c \
 					initialization/feed_map.c \
 					initialization/feed_map_2.c \
 					close_utils/close_scene.c \
-					close_utils/close_game.c
+					close_utils/close_game.c  \
+					utils/math_utils.c
 
 SRC_PATH		= $(addprefix $(SRC_DIR), $(SRC))
 

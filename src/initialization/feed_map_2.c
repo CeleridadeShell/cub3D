@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   feed_map_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 14:00:17 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/09/02 14:35:17 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/10/07 20:58:23 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	are_map_players_valid(t_scene *scene)
 		while (scene->map[i][j])
 		{
 			if (ft_strchr(VALID_PLAYER_CHARS, scene->map[i][j]))
-				valid_player_char_count++;
+				valid_player_char_count += init_player(scene, i, j, scene->map[i][j]);
 			j++;
 		}
 		i++;
