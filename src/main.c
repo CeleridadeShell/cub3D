@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:39:48 by christian         #+#    #+#             */
-/*   Updated: 2023/10/07 21:31:32 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/08 03:12:32 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ void	run_game(t_scene *scene)
 		throw_err(MINILIB_FAILED_WINDOW);
 		return ;
 	}
-	game->sprite = sprite_init(&game);
-	if(game->sprite == NULL)
+	game.sprites = sprite_init(&game);
+	if(game.sprites == NULL)
 		return ;
 	game.img = malloc(sizeof(t_img));
 	game.img->sprite_img = mlx_new_image(game.mlx, MAP_X, MAP_Y);
 	game.img->addr = mlx_get_data_addr(game.img->sprite_img, &game.img->bpp, &game.img->line_len, &game.img->endian);
-	mlx_loop_hook(mlx, trace_path, &game);
+	loop(&game);
 	close_game(&game);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:37:56 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/07 21:49:52 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/08 03:21:41 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,30 @@ typedef enum e_bool
 	FALSE = 0
 }	t_bool;
 
+typedef struct s_player
+{
+	int	x; // quadrante basico
+	int	y; // quadrante basico
+	float px; // posicao real do player
+	float py; // posicao real do player
+	float pdx; // angulo de rotacao da camera
+	float pdy; // angulo de rotacao da camera
+	float pa; // posicao do angulo, radiano
+
+}				t_player;
+
+typedef struct s_img
+{
+	void	*sprite_img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+	int		width;
+	int		height;
+	int		color;
+}				t_img;
+
 
 typedef struct s_scene
 {
@@ -108,32 +132,6 @@ typedef struct s_input_keys
 	t_bool		right;
 }				t_input_keys;
 
-typedef struct s_player
-{
-	int	x; // quadrante basico
-	int	y; // quadrante basico
-	float px; // posicao real do player
-	float py; // posicao real do player
-	float pdx; // angulo de rotacao da camera
-	float pdy; // angulo de rotacao da camera
-	float pa; // posicao do angulo, radiano
-
-}				t_player;
-
-
-
-typedef struct s_img
-{
-	void	*sprite_img;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
-	int		width;
-	int		height;
-	int		color;
-}				t_img;
-
 typedef struct s_game
 {
 	t_img *img;
@@ -163,10 +161,17 @@ int				is_map_walled(t_scene *scene);
 int				are_map_chars_valid(t_scene *scene);
 int				are_map_players_valid(t_scene *scene);
 void			init_game(t_game *game, t_scene *scene);
-void			close_game(t_game *game);
+int				close_game(t_game *game);
 float 			deg_to_rad(float deg);
 float 			fix_ang(float ang);
 int key_pressed(int keycode, t_game *game);
 int key_release(int keycode, t_game *game);
+void draw_mini_map(t_game *game, int a, int b, int y);
+int print_view(t_game *game);
+int init_player(t_scene *scene, int i, int j, char direction);
+int	img_init(char *file_path, void *mlx, t_img *img);
+t_sprite *sprite_init(t_game *game);
+void square(t_game *game, int x, int y, int color);
+
 
 #endif

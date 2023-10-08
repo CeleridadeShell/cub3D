@@ -6,7 +6,7 @@
 #    By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/20 19:31:21 by mcarecho          #+#    #+#              #
-#    Updated: 2023/10/07 20:56:15 by mcarecho         ###   ########.fr        #
+#    Updated: 2023/10/08 03:24:45 by mcarecho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,13 +34,16 @@ SRC				=	main.c \
 					initialization/feed_map_2.c \
 					close_utils/close_scene.c \
 					close_utils/close_game.c  \
-					utils/math_utils.c
+					utils/math_utils.c \
+					utils/key_utils.c \
+					utils/draw_utils.c \
+					game/main_game.c
 
 SRC_PATH		= $(addprefix $(SRC_DIR), $(SRC))
 
 CC				= gcc
 CFLAGS			= -Wall -Wextra -Werror
-MLXFLAGS		= -lmlx -lX11 -lXext
+MLXFLAGS		= -lmlx -lX11 -lXext -lm
 
 BIN				= ./bin/
 BINARY_OUT		= $(addprefix $(BIN), $(NAME))

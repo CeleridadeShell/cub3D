@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 19:08:03 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/10/07 21:50:33 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/08 03:14:57 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,16 @@ int init_player(t_scene *scene, int i, int j, char direction)
 	scene->player = malloc(sizeof(t_player));
 	scene->player->x = j;
 	scene->player->y = i;
-	scene->player->px = MAPS * (j + 0.5);
-	scene->player->py = MAPS * (i + 0.5); ;
+	scene->player->px = MAP_S * (j + 0.5);
+	scene->player->py = MAP_S * (i + 0.5); ;
 	if (direction == 'N')
-		scene.player.pa = 90;
+		scene->player->pa = 90;
 	else if (direction == 'S')
-		scene.player.pa = 270;
+		scene->player->pa = 270;
 	else if (direction == 'W')
-		scene.player.pa = 180;
+		scene->player->pa = 180;
 	else if (direction == 'E')
-		scene.player.pa = 0;
+		scene->player->pa = 0;
 	scene->player->pdx = cos(deg_to_rad(scene->player->pa));
 	scene->player->pdy = -sin(deg_to_rad(scene->player->pa));
 	return (1);
@@ -67,7 +67,7 @@ t_sprite *sprite_init(t_game *game)
 	sprite->no = malloc(sizeof(t_img));
 	sprite->so = malloc(sizeof(t_img));
 	sprite->we = malloc(sizeof(t_img));
-	if (!img_init(scene->no, game->mlx, sprite->no) || !img_init(scene->so, game->mlx, sprite->so) || !img_init(scene->we, game->mlx, sprite->we) || !img_init(scene->ea, game->mlx, sprite->ea))
+	if (!img_init(game->scene->no, game->mlx, sprite->no) || !img_init(game->scene->so, game->mlx, sprite->so) || !img_init(game->scene->we, game->mlx, sprite->we) || !img_init(game->scene->ea, game->mlx, sprite->ea))
 		return NULL;
 	return (sprite);
 }
