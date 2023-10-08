@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 21:32:42 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/08 03:57:34 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/08 01:46:20 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void draw_mini_map(t_game *game, int a, int b, int y)
 
 	a = game->player->y - 5;
 
-	while(a++ < game->player->y + 4)
+	while (a++ < game->player->y + 4)
 	{
 		x = 10;
 		b = game->player->x - 5;
-		while(a>=0 && a < game->scene->max_y && b++ < game->player->x + 4)
+		while (a >= 0 && a < game->scene->max_y && b++ < game->player->x + 4)
 		{
-			if(b >= 0 && b < (int)game->scene->max_x)
+			if (b >= 0 && b < (int)game->scene->max_x)
 			{
 				if (game->player->y == a && game->player->x == b)
 					square(game, x, y, 0x00FF00);
@@ -39,9 +39,35 @@ void draw_mini_map(t_game *game, int a, int b, int y)
 		}
 		y += 22;
 	}
-
 }
 
+void draw_3d_map(t_game *game)
+{
+	t_ray_print p_ray;
+	t_ray ray;
+
+	ray.ra = fix_ang(game->player->pa + 35);
+	ray.xo = 0;
+	ray.yo = 0;
+	ray.r = -1;
+	while (++ray.r < 800)
+	{
+		ray.dof = 0;
+		ray.dis_v = 100000;
+		ray.tan = tan(deg_to_rad(ray.ra));
+		horizontal_ray_check(game, &ray);
+		horizontal_ray_dist(game, &ray);
+		ray.dof = 0;
+		ray.dis_h = 100000;
+		ray.tan = 1.0 / ray.tan;
+		vertical_ray_check(game, &ray);
+		vertical_ray_dist(game, &ray);
+		calculate_ray_wall_height(game, &ray, &p_ray);
+		draw_floor_celing(game, &ray, &p_ray);
+		draw_wall(game, &ray, &p_ray);
+		ray.ra = fix_ang(ray.ra - 0.0875);
+	}
+}
 
 int print_view(t_game *game)
 {

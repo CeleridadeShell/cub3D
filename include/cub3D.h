@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:37:56 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/08 03:50:18 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/08 02:18:01 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,38 @@ typedef struct s_input_keys
 	t_bool		right;
 }				t_input_keys;
 
+typedef struct s_ray {
+    int        r;
+    int        mx;
+    int        my;
+    int        mp;
+    int        dof;
+    float    rx;
+    float    ry;
+    float    ra;
+    float    xo;
+    float    yo;
+    float    vx;
+    float    vy;
+    float    dis_v;
+    float    dis_h;
+    float    tan;
+    char    eye_v;
+    char    eye_h;
+}                t_ray;
+
+typedef struct s_ray_print{
+    int        ca;
+    int        line_h;
+    int        line_off;
+    int        color;
+    double    ty;
+    double    tx;
+    double    ty_step;
+    float    ty_off;
+    float    shade;
+}            t_ray_print;
+
 typedef struct s_game
 {
 	t_img *img;
@@ -174,6 +206,16 @@ int init_player(t_scene *scene, int i, int j, char direction);
 int	img_init(char *file_path, void *mlx, t_img *img);
 t_sprite *sprite_init(t_game *game);
 void square(t_game *game, int x, int y, int color);
+void horizontal_ray_check(t_game *game, t_ray *ray);
+void vertical_ray_check(t_game *game, t_ray *ray);
+void horizontal_ray_dist(t_game *game, t_ray *ray);
+void vertical_ray_dist(t_game *game, t_ray *ray);
+int	create_trgb(int t, int r, int g, int b);
+void calculate_ray_wall_heigh(t_game *game, t_ray *ray, t_ray_print *p_ray);
+int    get_sprite_color(int pixel, char *sprite, int shade);
+void verify_shade(t_ray ray, t_ray_print *p_ray);
+draw_wall(t_game *game, t_ray *ray, t_ray_print *p_ray);
+draw_floor_celing(t_game *game, t_ray *ray, t_ray_print *p_ray);
 
 
 #endif
