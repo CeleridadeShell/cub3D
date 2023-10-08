@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:37:56 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/08 03:21:41 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/08 03:50:18 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ typedef struct s_scene
 	unsigned int		f;
 	unsigned int		c;
 	char				**map;
+	int 				max_x;
+	int 				max_y;
 	t_player 			*player;
 }				t_scene;
 

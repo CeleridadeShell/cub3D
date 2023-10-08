@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   feed_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:38:44 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/09/02 14:33:27 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/10/08 03:54:29 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ static void	extract_map(t_scene *scene)
 		j++;
 		i++;
 	}
+	scene->max_y = j-1;
+	scene->max_x = ft_strlen(scene->map[0]);
 }
 
 static void	replace_spaces(t_scene *scene)
