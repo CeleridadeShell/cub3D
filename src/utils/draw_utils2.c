@@ -6,13 +6,13 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 01:57:00 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/08 02:17:18 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/08 07:27:18 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void verify_shade(t_ray ray, t_ray_print *p_ray)
+void verify_shade(t_ray *ray, t_ray_print *p_ray)
 {
     p_ray->ty = p_ray->ty_off * p_ray->ty_step;
     if (p_ray->shade == 1)

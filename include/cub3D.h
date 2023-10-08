@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:37:56 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/08 02:18:01 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/08 07:32:12 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,11 +211,12 @@ void vertical_ray_check(t_game *game, t_ray *ray);
 void horizontal_ray_dist(t_game *game, t_ray *ray);
 void vertical_ray_dist(t_game *game, t_ray *ray);
 int	create_trgb(int t, int r, int g, int b);
-void calculate_ray_wall_heigh(t_game *game, t_ray *ray, t_ray_print *p_ray);
+void calculate_ray_wall_height(t_game *game, t_ray *ray, t_ray_print *p_ray);
 int    get_sprite_color(int pixel, char *sprite, int shade);
-void verify_shade(t_ray ray, t_ray_print *p_ray);
-draw_wall(t_game *game, t_ray *ray, t_ray_print *p_ray);
-draw_floor_celing(t_game *game, t_ray *ray, t_ray_print *p_ray);
+void verify_shade(t_ray *ray, t_ray_print *p_ray);
+void draw_wall(t_game *game, t_ray *ray, t_ray_print *p_ray);
+void draw_floor_celing(t_game *game, t_ray *ray, t_ray_print *p_ray);
+int    draw_line(t_game *game, int begin[2], int end[2], int color);
 
 
 #endif

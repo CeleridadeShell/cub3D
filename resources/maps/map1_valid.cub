@@ -1,7 +1,7 @@
-NO       ./resources/assets/bluebrick.xpm
+NO       ./resources/assets/redbrick.xpm
 SO    ./resources/assets/greenbrick.xpm
-WE   ./resources/assets/redbrick.xpm
-EA ./resources/assets/yellowbrick.xpm
+WE   ./resources/assets/yellowbrick.xpm
+EA ./resources/assets/bluebrick.xpm
 
 F      220  ,                    100   ,    45
 C    225,  30,    127

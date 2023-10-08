@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 21:32:42 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/08 01:46:20 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/08 07:35:56 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void draw_3d_map(t_game *game)
 
 int print_view(t_game *game)
 {
+	draw_3d_map(game);
 	draw_mini_map(game, 10, 10, 10);
 	mlx_put_image_to_window(game->mlx, game->win, game->img->sprite_img, 0, 0);
 	return (0);
