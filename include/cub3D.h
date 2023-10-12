@@ -223,6 +223,6 @@ int		collision(float p, float pd, t_bool is_sub);
 void	move_front_back(t_game *game);
 void	move_right_left(t_game *game);
 void	move_player(t_game *game);
-void	clean_all(t_game *game, int err);
+int	clean_all(t_game *game);
 
 #endif

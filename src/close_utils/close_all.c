@@ -28,27 +28,24 @@ int	clean_all(t_game *game)
 	free_ptr((void **)&game->scene->we);
 	free_ptr((void **)&game->scene->ea);
 	free_ptr((void **)&game->scene->player);
-	while (game->scene->map != NULL && --game->scene->max_y > 0)
-		free_ptr((void **)&game->scene->map[game->scene->max_y - 1]);
+	while (game->scene->map != NULL && --game->scene->max_y >= 0)
+		free_ptr((void **)&game->scene->map[game->scene->max_y]);
 	free_ptr((void **)&game->scene->map);
-	free_ptr((void **)&game->scene);
 	if (game->mlx != NULL)
 	{
 		mlx_destroy_image(game->mlx, game->img->sprite_img);
-		mlx_destroy_image(game->mlx, game->sprite->ea->sprite_img);
-		mlx_destroy_image(game->mlx, game->sprite->no->sprite_img);
-		mlx_destroy_image(game->mlx, game->sprite->so->sprite_img);
-		mlx_destroy_image(game->mlx, game->sprite->we->sprite_img);
-		free_ptr((void **)&game->sprite->ea);
-		free_ptr((void **)&game->sprite->so);
-		free_ptr((void **)&game->sprite->we);
-		free_ptr((void **)&game->sprite->no);
-		free_ptr((void **)&game->move);
-		free_ptr((void **)&game->sprite);
+		mlx_destroy_image(game->mlx, game->sprites->ea->sprite_img);
+		mlx_destroy_image(game->mlx, game->sprites->no->sprite_img);
+		mlx_destroy_image(game->mlx, game->sprites->so->sprite_img);
+		mlx_destroy_image(game->mlx, game->sprites->we->sprite_img);
+		free_ptr((void **)&game->sprites->ea);
+		free_ptr((void **)&game->sprites->so);
+		free_ptr((void **)&game->sprites->we);
+		free_ptr((void **)&game->sprites->no);
+		free_ptr((void **)&game->sprites);
 		mlx_destroy_window(game->mlx, game->win);
 		mlx_destroy_display(game->mlx);
 		free_ptr((void **)&game->mlx);
-		free_ptr((void **)&game);
 	}
 	exit(0);
 	return 1;
