@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 21:23:51 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/07 21:30:03 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:13:06 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ int key_release(int keycode, t_game *game)
 	if (keycode == KEY_ESC)
 		close_game(game);
 	if (keycode == KEY_W)
-		game->input_keys.w = TRUE;
+		game->input_keys.w = FALSE;
 	if (keycode == KEY_S)
-		game->input_keys.s =TRUE;
+		game->input_keys.s =FALSE;
 	if (keycode == KEY_D)
-		game->input_keys.d = TRUE;
+		game->input_keys.d = FALSE;
 	if (keycode == KEY_A)
-		game->input_keys.a = TRUE;
+		game->input_keys.a = FALSE;
 	if (keycode == KEY_RIGHT)
-		game->input_keys.right = TRUE;
+		game->input_keys.right = FALSE;
 	if (keycode == KEY_LEFT)
-		game->input_keys.left = TRUE;
+		game->input_keys.left = FALSE;
 	return (0);
 }

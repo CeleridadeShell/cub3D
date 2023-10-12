@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 01:09:30 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/08 07:34:41 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/12 19:06:11 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void horizontal_ray_check(t_game *game, t_ray *ray)
 	}
 	else if (cos(deg_to_rad(ray->ra)) < -0.001)
 	{
-		ray->vx = (((int)game->player->px >> 6) << 6) + -0.001;
+		ray->vx = (((int)game->player->px >> 6) << 6) - 0.0001;
 		ray->vy = (game->player->px - ray->vx) * ray->tan + game->player->py;
 		ray->xo = -64;
 		ray->yo = -ray->xo * ray->tan;
@@ -42,15 +42,15 @@ void vertical_ray_check(t_game *game, t_ray *ray)
 {
 	if(sin(deg_to_rad(ray->ra)) > 0.001)
 	{
-		ray->ry = (((int)game->player->py >> 6) << 6) + 64;
+		ray->ry = (((int)game->player->py >> 6) << 6) - 0.0001;
 		ray->rx = (game->player->py - ray->ry) * ray->tan + game->player->px;
 		ray->yo = -64;
 		ray->xo = -ray->yo * ray->tan;
 		ray->eye_h = 'N';
 	}
-	else if (sin(deg_to_rad(ray->ra)) < -0.001)
+	else if (sin(deg_to_rad(ray->ra)) < - 0.001)
 	{
-		ray->ry = (((int)game->player->px >> 6) << 6) + -0.001;
+		ray->ry = (((int)game->player->py >> 6) << 6) + 64; 
 		ray->rx = (game->player->py - ray->ry) * ray->tan + game->player->px;
 		ray->yo = 64;
 		ray->xo = -ray->yo * ray->tan;
@@ -71,7 +71,7 @@ void horizontal_ray_dist(t_game *game, t_ray *ray)
 		ray->mx = (int)(ray->vx) >> 6;
 		ray->my = (int)(ray->vy) >> 6;
 		ray->mp = ray->my * game->scene->max_x + ray->mx;
-		if (ray->mp > 0 && ray->my >= 0 && ray->my < game->scene->max_y && ray->mx >= 0 && ray->mx < game->scene->max_x)
+		if (ray->mp > 0 && ray->my >= 0 && ray->my < game->scene->max_y && ray->mx >= 0 && ray->mx < game->scene->max_x && game->scene->map[ray->my][ray->mx] == '1')
 		{
 			{
 				ray->dof = game->scene->max_x;
@@ -97,11 +97,8 @@ void vertical_ray_dist(t_game *game, t_ray *ray)
 		ray->mp = ray->my * game->scene->max_x + ray->mx;
 		if (ray->mp > 0 && ray->my >= 0 && ray->my < game->scene->max_y && ray->mx >= 0 && ray->mx < game->scene->max_x && game->scene->map[ray->my][ray->mx] == '1')
 		{
-			{
 				ray->dof = game->scene->max_y;
 				ray->dis_h = cos(deg_to_rad(ray->ra)) * (ray->rx - game->player->px) - sin(deg_to_rad(ray->ra)) * (ray->ry - game->player->py);
-
-			}
 		}
 		else
 		{
@@ -125,7 +122,7 @@ void calculate_ray_wall_height(t_game *game, t_ray *ray, t_ray_print *p_ray)
 	}
 	p_ray->ca = fix_ang(game->player->pa - ray->ra);
 	ray->dis_h = ray->dis_h * cos(deg_to_rad(p_ray->ca));
-	p_ray->line_h = (MAP_S * 600 / ray->dis_h);
+	p_ray->line_h = (MAP_S * 600) / (ray->dis_h);
 	p_ray->ty_step = 64.0 / (float)p_ray->line_h;
 	p_ray->ty_off = 0;
 	if (p_ray->line_h > MAP_Y)
