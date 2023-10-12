@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 21:23:51 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/12 18:13:06 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/12 19:48:05 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int key_pressed(int keycode, t_game *game)
 int key_release(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
-		close_game(game);
+		clean_all(game);
 	if (keycode == KEY_W)
 		game->input_keys.w = FALSE;
 	if (keycode == KEY_S)

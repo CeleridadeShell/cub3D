@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:39:48 by christian         #+#    #+#             */
-/*   Updated: 2023/10/08 03:12:32 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/12 19:48:20 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void loop(t_game *game)
 	mlx_do_sync(game->mlx);
 	mlx_hook(game->win, 2, 1L << 0, &key_pressed, game);
 	mlx_hook(game->win, 3, 1L << 1, &key_release, game);
-	mlx_hook(game->win, 17, 0, &close_game, game);
+	mlx_hook(game->win, 17, 0, &clean_all, game);
 	mlx_hook(game->win, 9, 1L << 21, &print_view, game);
 	mlx_loop_hook(game->mlx, &print_view, game);
 	mlx_loop(game->mlx);
@@ -42,7 +42,7 @@ void	run_game(t_scene *scene)
 	game.img->sprite_img = mlx_new_image(game.mlx, MAP_X, MAP_Y);
 	game.img->addr = mlx_get_data_addr(game.img->sprite_img, &game.img->bpp, &game.img->line_len, &game.img->endian);
 	loop(&game);
-	close_game(&game);
+	clean_all(&game);
 }
 
 int	main(int argc, char **argv)

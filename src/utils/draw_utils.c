@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 21:37:58 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/08 07:30:34 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/12 19:45:45 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,11 @@ int    draw_line(t_game *game, int begin[2], int end[2], int color)
     delta[0] = end[0] - begin[0];
     delta[1] = end[1] - begin[1];
     pixels = sqrt((delta[0] * delta[0]) + (delta[1] * delta[1]));
-    delta[0] /= pixels;
-    delta[1] /= pixels;
+	if (pixels != 0)
+    {
+		delta[0] /= pixels;
+    	delta[1] /= pixels;
+	}
     pixel[0] = begin[0];
     pixel[1] = begin[1];
     while (pixels)

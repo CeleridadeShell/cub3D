@@ -6,7 +6,7 @@
 #    By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/20 19:31:21 by mcarecho          #+#    #+#              #
-#    Updated: 2023/10/12 23:17:15 by mcarecho         ###   ########.fr        #
+#    Updated: 2023/10/12 19:48:53 by mcarecho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRC				=	main.c \
 					initialization/feed_map.c \
 					initialization/feed_map_2.c \
 					close_utils/close_scene.c \
-					close_utils/close_game.c  \
+					close_utils/close_all.c  \
 					utils/math_utils.c \
 					utils/key_utils.c \
 					utils/ray_utils.c \
@@ -45,7 +45,7 @@ SRC				=	main.c \
 SRC_PATH		= $(addprefix $(SRC_DIR), $(SRC))
 
 CC				= gcc
-CFLAGS			= -Wall -Wextra -Werror -g3  
+CFLAGS			= -Wall -Wextra -Werror -g3
 
 MLXFLAGS		= -lmlx -lX11 -lXext -lm
 

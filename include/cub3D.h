@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:37:56 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/12 18:04:58 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/12 19:48:44 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,6 @@ int				is_map_walled(t_scene *scene);
 int				are_map_chars_valid(t_scene *scene);
 int				are_map_players_valid(t_scene *scene);
 void			init_game(t_game *game, t_scene *scene);
-int				close_game(t_game *game);
 float 			deg_to_rad(float deg);
 float 			fix_ang(float ang);
 int key_pressed(int keycode, t_game *game);
@@ -224,5 +223,6 @@ int		collision(float p, float pd, t_bool is_sub);
 void	move_front_back(t_game *game);
 void	move_right_left(t_game *game);
 void	move_player(t_game *game);
+void	clean_all(t_game *game, int err);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 01:09:30 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/12 19:06:11 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/12 19:42:27 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void vertical_ray_check(t_game *game, t_ray *ray)
 	}
 	else if (sin(deg_to_rad(ray->ra)) < - 0.001)
 	{
-		ray->ry = (((int)game->player->py >> 6) << 6) + 64; 
+		ray->ry = (((int)game->player->py >> 6) << 6) + 64;
 		ray->rx = (game->player->py - ray->ry) * ray->tan + game->player->px;
 		ray->yo = 64;
 		ray->xo = -ray->yo * ray->tan;
@@ -92,7 +92,7 @@ void vertical_ray_dist(t_game *game, t_ray *ray)
 		ray->mx = (int)(ray->rx) >> 6;
 		ray->my = (int)(ray->ry) >> 6;
 		ray->mp = ray->my * game->scene->max_x + ray->mx;
-		if (ray->mp > 0 && ray->my >= 0 && ray->my < game->scene->max_y && ray->mx >= 0 && ray->mx < game->scene->max_x && game->scene->map[ray->my][ray->mx] == '1')
+		if (ray->mp > 0 && ray->my >= 0 && ray->my < game->scene->max_y && ray->mx >= 0 && ray->mx < (int)ft_strlen(game->scene->map[ray->my]) && game->scene->map[ray->my][ray->mx] == '1')
 		{
 				ray->dof = game->scene->max_y;
 				ray->dis_h = cos(deg_to_rad(ray->ra)) * (ray->rx - game->player->px) - sin(deg_to_rad(ray->ra)) * (ray->ry - game->player->py);
