@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 21:32:42 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/12 12:41:46 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/12 12:59:54 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,9 @@ int print_view(t_game *game)
 	draw_3d_map(game);
 	draw_mini_map(game, 10, 10, 10);
 	mlx_put_image_to_window(game->mlx, game->win, game->img->sprite_img, 0, 0);
+	move_player(game);
+	game->player->x = (int)game->player->px / MAP_S;
+	game->player->y = (int)game->player->py / MAP_S;
+	cam_rotation(game);
 	return (0);
 }
