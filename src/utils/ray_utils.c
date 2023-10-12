@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 01:09:30 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/08 01:55:07 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/08 07:34:41 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,12 +112,12 @@ void vertical_ray_dist(t_game *game, t_ray *ray)
 	}
 }
 
-void calculate_ray_wall_heigh(t_game *game, t_ray *ray, t_ray_print *p_ray)
+void calculate_ray_wall_height(t_game *game, t_ray *ray, t_ray_print *p_ray)
 {
 	p_ray->shade = 1;
 	if (ray->dis_v < ray->dis_h)
 	{
-		ray_rx = ray->vx;
+		ray->rx = ray->vx;
 		ray->ry = ray->vy;
 		p_ray->shade = 0.5;
 		ray->dis_h = ray->dis_v;

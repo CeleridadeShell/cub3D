@@ -6,7 +6,7 @@
 #    By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/20 19:31:21 by mcarecho          #+#    #+#              #
-#    Updated: 2023/10/08 02:18:54 by mcarecho         ###   ########.fr        #
+#    Updated: 2023/10/08 07:34:20 by mcarecho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRC				=	main.c \
 					close_utils/close_game.c  \
 					utils/math_utils.c \
 					utils/key_utils.c \
+					utils/ray_utils.c \
 					utils/draw_utils.c \
 					utils/draw_utils2.c \
 					game/main_game.c
