@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 12:49:51 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/12 12:57:14 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:11:51 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	cam_rotation(t_game *game)
 {
-	if (game->move->rot_r == TRUE)
+	if (game->input_keys.right == TRUE)
 	{
 		game->player->pa -= ROT_SPEED;
 		game->player->pa = fix_ang(game->player->pa);
 		game->player->pdx = cos(deg_to_rad(game->player->pa));
 		game->player->pdy = -sin(deg_to_rad(game->player->pa));
 	}
-	if (game->move->rot_l == TRUE)
+	if (game->input_keys.left == TRUE)
 	{
 		game->player->pa += ROT_SPEED;
 		game->player->pa = fix_ang(game->player->pa);
@@ -46,7 +46,7 @@ int	collision(float p, float pd, t_bool is_sub)
 
 void	move_front_back(t_game *game)
 {
-	if (game->move->w == TRUE)
+	if (game->input_keys.w == TRUE)
 	{
 		if (game->scene->map[game->player->y]
 			[collision(game->player->px, game->player->pdx, FALSE)]
@@ -56,7 +56,7 @@ void	move_front_back(t_game *game)
 			[game->player->x] != '1')
 			game->player->py += game->player->pdy * MOVE_SPEED;
 	}
-	if (game->move->s == TRUE)
+	if (game->input_keys.s == TRUE)
 	{
 		if (game->scene->map[game->player->y]
 			[collision(game->player->px, game->player->pdx, TRUE)]
@@ -70,7 +70,7 @@ void	move_front_back(t_game *game)
 
 void	move_right_left(t_game *game)
 {
-	if (game->move->d == TRUE)
+	if (game->input_keys.d == TRUE)
 	{
 		if (game->scene->map[game->player->y]
 			[collision(game->player->px, game->player->pdy, TRUE)] != '1')
@@ -79,7 +79,7 @@ void	move_right_left(t_game *game)
 			[game->player->x] != '1')
 			game->player->py += game->player->pdx * MOVE_SPEED;
 	}
-	if (game->move->a == TRUE)
+	if (game->input_keys.a == TRUE)
 	{
 		if (game->scene->map[game->player->y]
 			[collision(game->player->px, game->player->pdy, FALSE)]

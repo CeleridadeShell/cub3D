@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:37:56 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/12 12:57:03 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:04:58 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,6 +219,10 @@ void verify_shade(t_ray *ray, t_ray_print *p_ray);
 void draw_wall(t_game *game, t_ray *ray, t_ray_print *p_ray);
 void draw_floor_celing(t_game *game, t_ray *ray, t_ray_print *p_ray);
 int    draw_line(t_game *game, int begin[2], int end[2], int color);
-
+void	cam_rotation(t_game *game);
+int		collision(float p, float pd, t_bool is_sub);
+void	move_front_back(t_game *game);
+void	move_right_left(t_game *game);
+void	move_player(t_game *game);
 
 #endif
