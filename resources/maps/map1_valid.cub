@@ -3,8 +3,8 @@ SO    ./resources/assets/greenbrick.xpm
 WE   ./resources/assets/yellowbrick.xpm
 EA ./resources/assets/bluebrick.xpm
 
-F      220  ,                    100   ,    45
-C    225,  30,    127
+F     150,  75, 000 
+C   5, 79, 119
 
         1111111111111111111111111
         1000000000110000000000001

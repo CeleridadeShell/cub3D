@@ -71,13 +71,10 @@ void horizontal_ray_dist(t_game *game, t_ray *ray)
 		ray->mx = (int)(ray->vx) >> 6;
 		ray->my = (int)(ray->vy) >> 6;
 		ray->mp = ray->my * game->scene->max_x + ray->mx;
-		if (ray->mp > 0 && ray->my >= 0 && ray->my < game->scene->max_y && ray->mx >= 0 && ray->mx < game->scene->max_x && game->scene->map[ray->my][ray->mx] == '1')
+		if (ray->mp > 0 && ray->my >= 0 && ray->my < game->scene->max_y && ray->mx >= 0 && ray->mx < (int)ft_strlen(game->scene->map[ray->my]) && game->scene->map[ray->my][ray->mx] == '1')
 		{
-			{
-				ray->dof = game->scene->max_x;
-				ray->dis_v = cos(deg_to_rad(ray->ra)) * (ray->vx - game->player->px) - sin(deg_to_rad(ray->ra)) * (ray->vy - game->player->py);
-
-			}
+			ray->dof = game->scene->max_x;
+			ray->dis_v = cos(deg_to_rad(ray->ra)) * (ray->vx - game->player->px) - sin(deg_to_rad(ray->ra)) * (ray->vy - game->player->py);
 		}
 		else
 		{

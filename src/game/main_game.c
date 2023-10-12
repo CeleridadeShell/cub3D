@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 21:32:42 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/12 12:59:54 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/12 23:24:27 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@ void draw_mini_map(t_game *game, int a, int b, int y)
 	int x;
 
 	a = game->player->y - 5;
-
 	while (a++ < game->player->y + 4)
 	{
 		x = 10;
 		b = game->player->x - 5;
 		while (a >= 0 && a < game->scene->max_y && b++ < game->player->x + 4)
 		{
-			if (b >= 0 && b < (int)game->scene->max_x)
+			if (b >= 0 && b < (int)ft_strlen(game->scene->map[a]))
 			{
 				if (game->player->y == a && game->player->x == b)
 					square(game, x, y, 0x00FF00);

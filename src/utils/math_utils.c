@@ -14,10 +14,9 @@
 
 float fix_ang(float ang)
 {
-	if ((int)ang > 359.9)
-		return (ang - 360);
-	if ((int)ang < 0.9)
-		return (ang + 360);
+	ang = fmod(ang, 360.0);
+	if(ang < 0)
+		ang+= 360.0;
 	return (ang);
 }
 
