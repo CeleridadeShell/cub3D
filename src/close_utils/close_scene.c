@@ -17,13 +17,13 @@ static void	free_scene_lines(t_scene *scene)
 	int	i;
 
 	i = 0;
-	while (scene->scene_lines[i])
-	{
-		ft_freethis(&scene->scene_lines[i], NULL);
-		i++;
-	}
 	if (scene->scene_lines)
 	{
+		while (scene->scene_lines[i])
+		{
+			free_ptr((void **)&scene->scene_lines[i]);
+			i++;
+		}
 		free(scene->scene_lines);
 		scene->scene_lines = NULL;
 	}
@@ -38,7 +38,7 @@ static void	free_map(t_scene *scene)
 	{
 		while (scene->map[i])
 		{
-			ft_freethis(&scene->map[i], NULL);
+			free_ptr((void **)&scene->map[i]);
 			i++;
 		}
 		free(scene->map);
@@ -50,8 +50,8 @@ void	close_scene(t_scene *scene)
 {
 	free_scene_lines(scene);
 	free_map(scene);
-	ft_freethis(&scene->no, NULL);
-	ft_freethis(&scene->so, NULL);
-	ft_freethis(&scene->we, NULL);
-	ft_freethis(&scene->ea, NULL);
+	free_ptr((void **)&scene->no);
+	free_ptr((void **)&scene->so);
+	free_ptr((void **)&scene->we);
+	free_ptr((void **)&scene->ea);
 }

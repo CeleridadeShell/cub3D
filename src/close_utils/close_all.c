@@ -12,7 +12,7 @@
 
 #include <cub3D.h>
 
-static void	free_ptr(void **ptr)
+void	free_ptr(void **ptr)
 {
 	if (*ptr)
 	{

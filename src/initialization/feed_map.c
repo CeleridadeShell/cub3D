@@ -78,27 +78,6 @@ static void	extract_map(t_scene *scene)
 	scene->max_x = ft_strlen(scene->map[0]);
 }
 
-static void	replace_spaces(t_scene *scene)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (scene->map[i])
-	{
-		j = 0;
-		while (scene->map[i][j])
-		{
-			if (scene->map[i][j] == ' ')
-			{
-				scene->map[i][j] = '1';
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
 int	feed_scene_map(t_scene *scene)
 {
 	if (!is_map_last_element(scene))
@@ -107,7 +86,6 @@ int	feed_scene_map(t_scene *scene)
 		return (0);
 	}
 	extract_map(scene);
-	replace_spaces(scene);
 	if (!is_map_walled(scene))
 	{
 		throw_err(MAP_NOT_WALLED);

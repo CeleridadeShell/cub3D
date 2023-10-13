@@ -54,6 +54,7 @@
 # define MINILIB_FAILED_SPRITE 11
 # define VALID_CHARS "10NSEW "
 # define VALID_PLAYER_CHARS "NSEW"
+# define VALID_CHAR_0 "10NSEW"
 # define MAP_X 800
 # define MAP_Y 600
 # define MAP_S 64 // tamanho da sprite
@@ -224,5 +225,6 @@ void	move_front_back(t_game *game);
 void	move_right_left(t_game *game);
 void	move_player(t_game *game);
 int	clean_all(t_game *game);
+void	free_ptr(void **ptr);
 
 #endif
