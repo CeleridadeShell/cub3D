@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 14:00:17 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/10/13 15:44:08 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/14 20:00:29 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,9 @@ int	is_map_walled(t_scene *scene)
 	return (1);
 }
 
-int	are_map_chars_valid_utils(t_scene *scene)
+int	are_map_chars_valid_utils(t_scene *scene, size_t i, size_t j)
 {
-	if (ft_strchr(VALID_CHARS, scene->map[i][j]))
-		return (1);
-	else
+	if (!ft_strchr(VALID_CHARS, scene->map[i][j]))
 		return (0);
 	if (scene->map[i][j] == '0' && (ft_strlen(scene->map[i - 1]) < j
 									|| ft_strlen(scene->map[i + 1]) < j))
@@ -82,6 +80,7 @@ int	are_map_chars_valid_utils(t_scene *scene)
 						scene->map[i][j - 1]) || !ft_strchr(VALID_CHAR_0,
 						scene->map[i][j + 1])))
 		return (0);
+	return (1);
 }
 
 /* vpc_count = valid_player_char_count  */
