@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:50:51 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/08/29 22:54:20 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/10/13 15:55:01 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ static void	free_rgb(char *RGB, char *r, char *g, char *b)
 	ft_freethis(&RGB, NULL);
 }
 
-unsigned int	parse_color(char *RGB)
+//parse_color
+unsigned int	p_color(char *RGB)
 {
 	char			*r;
 	char			*g;

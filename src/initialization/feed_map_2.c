@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 14:00:17 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/10/13 03:30:12 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/13 15:44:08 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static int	check_horizontal_walls(t_scene *scene, int map_len)
 	i = 0;
 	while (scene->map[map_len - 1][i])
 	{
-		if (scene->map[map_len - 1][i] == '1' || scene->map[map_len - 1][i] == ' ')
+		if (scene->map[map_len - 1][i] == '1' ||
+				scene->map[map_len - 1][i] == ' ')
 			i++;
 		else
 			return (0);
@@ -43,7 +44,8 @@ static int	check_vertical_walls(t_scene *scene, int map_len)
 	while (i < map_len - 1)
 	{
 		if (scene->map[i][0] != '1' && \
-		scene->map[i][ft_strlen(scene->map[i]) - 1] != '1' && scene->map[i][0] != ' ' && \
+		scene->map[i][ft_strlen(scene->map[i]) - 1] != '1' &&
+				scene->map[i][0] != ' ' && \
 		scene->map[i][ft_strlen(scene->map[i]) - 1] != ' ' )
 			return (0);
 		i++;
@@ -65,39 +67,32 @@ int	is_map_walled(t_scene *scene)
 	return (1);
 }
 
-int	are_map_chars_valid(t_scene *scene)
+int	are_map_chars_valid_utils(t_scene *scene)
 {
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (scene->map[i])
-	{
-		j = 0;
-		while (scene->map[i][j])
-		{
-			if (ft_strchr(VALID_CHARS, scene->map[i][j]))
-				j++;
-			else
-				return (0);
-			if (scene->map[i][j] == '0' && (ft_strlen(scene->map[i - 1]) < j || ft_strlen(scene->map[i + 1]) < j))
-				return (0);
-			if (scene->map[i][j] == '0' && (!ft_strchr(VALID_CHAR_0, scene->map[i - 1][j]) || !ft_strchr(VALID_CHAR_0, scene->map[i + 1][j])  ||!ft_strchr(VALID_CHAR_0, scene->map[i][j - 1]) || !ft_strchr(VALID_CHAR_0, scene->map[i][j + 1])))
-				return (0);
-		}
-		i++;
-	}
-	return (1);
+	if (ft_strchr(VALID_CHARS, scene->map[i][j]))
+		return (1);
+	else
+		return (0);
+	if (scene->map[i][j] == '0' && (ft_strlen(scene->map[i - 1]) < j
+									|| ft_strlen(scene->map[i + 1]) < j))
+		return (0);
+	if (scene->map[i][j] == '0' && (!ft_strchr(VALID_CHAR_0,
+						scene->map[i - 1][j]) || !ft_strchr(VALID_CHAR_0,
+						scene->map[i + 1][j]) || !ft_strchr(VALID_CHAR_0,
+						scene->map[i][j - 1]) || !ft_strchr(VALID_CHAR_0,
+						scene->map[i][j + 1])))
+		return (0);
 }
 
+/* vpc_count = valid_player_char_count  */
 int	are_map_players_valid(t_scene *scene)
 {
 	int	i;
 	int	j;
-	int	valid_player_char_count;
+	int	vpc_count;
 
 	i = 0;
-	valid_player_char_count = 0;
+	vpc_count = 0;
 	while (scene->map[i])
 	{
 		j = 0;
@@ -105,17 +100,16 @@ int	are_map_players_valid(t_scene *scene)
 		{
 			if (ft_strchr(VALID_PLAYER_CHARS, scene->map[i][j]))
 			{
-				if (valid_player_char_count == 0)
-				
-					valid_player_char_count += init_player(scene, i, j, scene->map[i][j]);
-				else 
-					valid_player_char_count++;
+				if (vpc_count == 0)
+					vpc_count += init_player(scene, i, j, scene->map[i][j]);
+				else
+					vpc_count++;
 			}
 			j++;
 		}
 		i++;
 	}
-	if (valid_player_char_count > 1)
+	if (vpc_count > 1)
 		return (0);
 	return (1);
 }

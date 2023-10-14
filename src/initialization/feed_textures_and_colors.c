@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   feed_textures_and_colors.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 17:56:45 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/09/07 06:01:37 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/10/13 15:57:41 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,17 @@ Checks if there are colors for possible locales.
 
 int	feed_scene_floor_and_celling(t_scene *scene)
 {
-	size_t		i;
+	size_t	i;
 
 	i = 0;
-	while (scene->scene_lines[i])
+	while (scene->scene->s_l[i])
 	{
-		if (ft_strncmp(scene->scene_lines[i], "F ", 2) == 0)
+		if (ft_strncmp(scene->scene->s_l[i], "F ", 2) == 0)
 		{
 			if (scene->f >> 30 == 0)
 			{
-				scene->f = parse_color(ft_substr(scene->scene_lines[i], ft_strchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + 1, ft_strlen(scene->scene_lines[i])));
+				scene->f = pa_color(ft_substr(scene->scene->s_l[i],
+						ft_strchr(scene->scene->s_l[i], ' ') - scene->scene->s_l[i] + 1, ft_strlen(scene->scene->s_l[i])));
 				scene->f = (1 << 30 | scene->f);
 			}
 			else
@@ -63,11 +64,11 @@ int	feed_scene_floor_and_celling(t_scene *scene)
 				return (0);
 			}
 		}
-		if (ft_strncmp(scene->scene_lines[i], "C ", 2) == 0)
+		if (ft_strncmp(scene->scene->s_l[i], "C ", 2) == 0)
 		{
 			if (scene->c >> 30 == 0)
 			{
-				scene->c = parse_color(ft_substr(scene->scene_lines[i], ft_strchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + 1, ft_strlen(scene->scene_lines[i])));
+				scene->c = p_color(ft_substr(scene->scene->s_l[i], ft_strchr(scene->scene->s_l[i], ' ') - scene->scene->s_l[i] + 1, ft_strlen(scene->scene->s_l[i])));
 				scene->c = (1 << 30 | scene->c);
 			}
 			else
@@ -92,47 +93,47 @@ Checks if there is only one texture per cardinal direction.
 Checks if there are textures for all cardinal directions.
 */
 
-int	feed_scene_textures(t_scene *scene)
+int feed_scene_textures(t_scene *scene)
 {
-	size_t		i;
+	size_t i;
 
 	i = 0;
-	while (scene->scene_lines[i])
+	while (scene->scene->s_l[i])
 	{
-		if (ft_strncmp(scene->scene_lines[i], "NO ", 3) == 0)
+		if (ft_strncmp(scene->scene->s_l[i], "NO ", 3) == 0)
 		{
 			if (scene->no == NULL)
-				scene->no = ft_substr(scene->scene_lines[i], ft_strrchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + 1, ft_strlen(scene->scene_lines[i]));
+				scene->no = ft_substr(scene->scene->s_l[i], ft_strrchr(scene->scene->s_l[i], ' ') - scene->scene->s_l[i] + 1, ft_strlen(scene->scene->s_l[i]));
 			else
 			{
 				throw_err(TEXTURES_INVALID);
 				return (0);
 			}
 		}
-		if (ft_strncmp(scene->scene_lines[i], "SO ", 3) == 0)
+		if (ft_strncmp(scene->scene->s_l[i], "SO ", 3) == 0)
 		{
 			if (scene->so == NULL)
-				scene->so = ft_substr(scene->scene_lines[i], ft_strrchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + 1, ft_strlen(scene->scene_lines[i]));
+				scene->so = ft_substr(scene->scene->s_l[i], ft_strrchr(scene->scene->s_l[i], ' ') - scene->scene->s_l[i] + 1, ft_strlen(scene->scene->s_l[i]));
 			else
 			{
 				throw_err(TEXTURES_INVALID);
 				return (0);
 			}
 		}
-		if (ft_strncmp(scene->scene_lines[i], "WE ", 3) == 0)
+		if (ft_strncmp(scene->scene->s_l[i], "WE ", 3) == 0)
 		{
 			if (scene->we == NULL)
-				scene->we = ft_substr(scene->scene_lines[i], ft_strrchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + 1, ft_strlen(scene->scene_lines[i]));
+				scene->we = ft_substr(scene->scene->s_l[i], ft_strrchr(scene->scene->s_l[i], ' ') - scene->scene->s_l[i] + 1, ft_strlen(scene->scene->s_l[i]));
 			else
 			{
 				throw_err(TEXTURES_INVALID);
 				return (0);
 			}
 		}
-		if (ft_strncmp(scene->scene_lines[i], "EA ", 3) == 0)
+		if (ft_strncmp(scene->scene->s_l[i], "EA ", 3) == 0)
 		{
 			if (scene->ea == NULL)
-				scene->ea = ft_substr(scene->scene_lines[i], ft_strrchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + 1, ft_strlen(scene->scene_lines[i]));
+				scene->ea = ft_substr(scene->scene->s_l[i], ft_strrchr(scene->scene->s_l[i], ' ') - scene->scene->s_l[i] + 1, ft_strlen(scene->scene->s_l[i]));
 			else
 			{
 				throw_err(TEXTURES_INVALID);

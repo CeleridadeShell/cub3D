@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene_initialization.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 21:28:33 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/09/07 19:07:16 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/10/13 15:56:30 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ static int	feed_scene_lines(t_scene *scene, char *map_path, int line_count)
 			treated_line = ft_substr(gnl_line, 0, ft_strrchr(gnl_line, '\n') \
 			- gnl_line);
 			ft_freethis(&gnl_line, NULL);
-			scene->scene_lines[line_count] = treated_line;
+			scene->scene->s_l[line_count] = treated_line;
 		}
 		else
-			scene->scene_lines[line_count] = gnl_line;
+			scene->scene->s_l[line_count] = gnl_line;
 		gnl_line = get_next_line(scene->fd);
 		line_count++;
 	}
@@ -75,8 +75,8 @@ int	initialize_scene(t_scene *scene, char *map_path)
 	line_count = count_lines(scene, map_path, 0);
 	if (line_count < 0)
 		return (0);
-	scene->scene_lines = (char **) ft_calloc(line_count + 1, sizeof(char *));
-	if (!scene->scene_lines)
+	scene->scene->s_l = (char **) ft_calloc(line_count + 1, sizeof(char *));
+	if (!scene->scene->s_l)
 		return (0);
 	if (!feed_scene_lines(scene, map_path, 0))
 		return (0);
