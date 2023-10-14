@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 12:49:51 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/12 18:11:51 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:38:35 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ void	move_front_back(t_game *game)
 			[collision(game->player->px, game->player->pdx, FALSE)]
 			!= '1')
 			game->player->px += game->player->pdx * MOVE_SPEED;
-		if (game->scene->map[collision(game->player->py, game->player->pdy, FALSE)]
+		if (game->scene->map[collision(game->player->py, game->player->pdy, \
+		FALSE)]
 			[game->player->x] != '1')
 			game->player->py += game->player->pdy * MOVE_SPEED;
 	}
@@ -62,7 +63,8 @@ void	move_front_back(t_game *game)
 			[collision(game->player->px, game->player->pdx, TRUE)]
 			!= '1')
 			game->player->px -= game->player->pdx * MOVE_SPEED;
-		if (game->scene->map[collision(game->player->py, game->player->pdy, TRUE)]
+		if (game->scene->map[collision(game->player->py, game->player->pdy, \
+		TRUE)]
 			[game->player->x] != '1')
 			game->player->py -= game->player->pdy * MOVE_SPEED;
 	}
@@ -75,7 +77,8 @@ void	move_right_left(t_game *game)
 		if (game->scene->map[game->player->y]
 			[collision(game->player->px, game->player->pdy, TRUE)] != '1')
 			game->player->px -= game->player->pdy * MOVE_SPEED;
-		if (game->scene->map[collision(game->player->py, game->player->pdx, FALSE)]
+		if (game->scene->map[collision(game->player->py, game->player->pdx, \
+		FALSE)]
 			[game->player->x] != '1')
 			game->player->py += game->player->pdx * MOVE_SPEED;
 	}
@@ -85,7 +88,8 @@ void	move_right_left(t_game *game)
 			[collision(game->player->px, game->player->pdy, FALSE)]
 			!= '1')
 			game->player->px += game->player->pdy * MOVE_SPEED;
-		if (game->scene->map[collision(game->player->py, game->player->pdx, TRUE)]
+		if (game->scene->map[collision(game->player->py, game->player->pdx, \
+		TRUE)]
 			[game->player->x] != '1')
 			game->player->py -= game->player->pdx * MOVE_SPEED;
 	}

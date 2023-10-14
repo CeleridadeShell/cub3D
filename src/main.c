@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:39:48 by christian         #+#    #+#             */
-/*   Updated: 2023/10/12 19:48:20 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:42:54 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void loop(t_game *game)
+void	loop(t_game *game)
 {
 	mlx_do_sync(game->mlx);
 	mlx_hook(game->win, 2, 1L << 0, &key_pressed, game);
@@ -36,11 +36,12 @@ void	run_game(t_scene *scene)
 		return ;
 	}
 	game.sprites = sprite_init(&game);
-	if(game.sprites == NULL)
+	if (game.sprites == NULL)
 		return ;
 	game.img = malloc(sizeof(t_img));
 	game.img->sprite_img = mlx_new_image(game.mlx, MAP_X, MAP_Y);
-	game.img->addr = mlx_get_data_addr(game.img->sprite_img, &game.img->bpp, &game.img->line_len, &game.img->endian);
+	game.img->addr = mlx_get_data_addr(game.img->sprite_img, &game.img->bpp, \
+	&game.img->line_len, &game.img->endian);
 	loop(&game);
 	clean_all(&game);
 }

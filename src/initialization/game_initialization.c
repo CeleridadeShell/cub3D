@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_initialization.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 19:08:03 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/10/08 03:14:57 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:18:38 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ void	init_game(t_game *game, t_scene *scene)
 	game->input_keys.right = FALSE;
 }
 
-int init_player(t_scene *scene, int i, int j, char direction)
+int	init_player(t_scene *scene, int i, int j, char direction)
 {
 	scene->player = malloc(sizeof(t_player));
 	scene->player->x = j;
 	scene->player->y = i;
 	scene->player->px = MAP_S * (j + 0.5);
-	scene->player->py = MAP_S * (i + 0.5); ;
+	scene->player->py = MAP_S * (i + 0.5);
 	if (direction == 'N')
 		scene->player->pa = 90;
 	else if (direction == 'S')
@@ -48,26 +48,31 @@ int init_player(t_scene *scene, int i, int j, char direction)
 
 int	img_init(char *file_path, void *mlx, t_img *img)
 {
-	img->sprite_img = mlx_xpm_file_to_image(mlx, file_path, &img->width, &img->height);
+	img->sprite_img = mlx_xpm_file_to_image(mlx, file_path, &img->width, \
+	&img->height);
 	if (img->sprite_img == NULL || img->width != 64 || img->height != 64)
 	{
 		throw_err(MINILIB_FAILED_SPRITE);
 		return (0);
 	}
-	img->addr = mlx_get_data_addr(img->sprite_img, &img->bpp, &img->line_len, &img->endian);
+	img->addr = mlx_get_data_addr(img->sprite_img, &img->bpp, \
+	&img->line_len, &img->endian);
 	return (1);
 }
 
-t_sprite *sprite_init(t_game *game)
+t_sprite	*sprite_init(t_game *game)
 {
-	t_sprite *sprite;
+	t_sprite	*sprite;
 
 	sprite = malloc(sizeof(t_sprite));
 	sprite->ea = malloc(sizeof(t_img));
 	sprite->no = malloc(sizeof(t_img));
 	sprite->so = malloc(sizeof(t_img));
 	sprite->we = malloc(sizeof(t_img));
-	if (!img_init(game->scene->no, game->mlx, sprite->no) || !img_init(game->scene->so, game->mlx, sprite->so) || !img_init(game->scene->we, game->mlx, sprite->we) || !img_init(game->scene->ea, game->mlx, sprite->ea))
-		return NULL;
+	if (!img_init(game->scene->no, game->mlx, sprite->no) || \
+	!img_init(game->scene->so, game->mlx, sprite->so) || \
+	!img_init(game->scene->we, game->mlx, sprite->we) || \
+	!img_init(game->scene->ea, game->mlx, sprite->ea))
+		return (NULL);
 	return (sprite);
 }

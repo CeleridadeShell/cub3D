@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 21:32:42 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/12 23:24:27 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:39:20 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void draw_mini_map(t_game *game, int a, int b, int y)
+void	draw_mini_map(t_game *game, int a, int b, int y)
 {
-	int x;
+	int	x;
 
 	a = game->player->y - 5;
 	while (a++ < game->player->y + 4)
@@ -40,10 +40,10 @@ void draw_mini_map(t_game *game, int a, int b, int y)
 	}
 }
 
-void draw_3d_map(t_game *game)
+void	draw_3d_map(t_game *game)
 {
-	t_ray_print p_ray;
-	t_ray ray;
+	t_ray_print	p_ray;
+	t_ray		ray;
 
 	ray.ra = fix_ang(game->player->pa + 35);
 	ray.xo = 0;
@@ -68,7 +68,7 @@ void draw_3d_map(t_game *game)
 	}
 }
 
-int print_view(t_game *game)
+int	print_view(t_game *game)
 {
 	draw_3d_map(game);
 	draw_mini_map(game, 10, 10, 10);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   feed_textures_and_colors.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 17:56:45 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/10/14 19:52:44 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:37:28 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ int	feed_scene_floor_and_celling(t_scene *scene)
 		{
 			if (scene->f >> 30 == 0)
 			{
-				scene->f = parse_color(ft_substr(scene->scene_lines[i],
-						ft_strchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + 1, ft_strlen(scene->scene_lines[i])));
+				scene->f = parse_color(ft_substr(scene->scene_lines[i], \
+				ft_strchr(scene->scene_lines[i], ' ') - \
+				scene->scene_lines[i] + 1, \
+				ft_strlen(scene->scene_lines[i])));
 				scene->f = (1 << 30 | scene->f);
 			}
 			else
@@ -68,7 +70,9 @@ int	feed_scene_floor_and_celling(t_scene *scene)
 		{
 			if (scene->c >> 30 == 0)
 			{
-				scene->c = parse_color(ft_substr(scene->scene_lines[i], ft_strchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + 1, ft_strlen(scene->scene_lines[i])));
+				scene->c = parse_color(ft_substr(scene->scene_lines[i], \
+				ft_strchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] \
+				+ 1, ft_strlen(scene->scene_lines[i])));
 				scene->c = (1 << 30 | scene->c);
 			}
 			else
@@ -93,9 +97,9 @@ Checks if there is only one texture per cardinal direction.
 Checks if there are textures for all cardinal directions.
 */
 
-int feed_scene_textures(t_scene *scene)
+int	feed_scene_textures(t_scene *scene)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (scene->scene_lines[i])
@@ -103,7 +107,9 @@ int feed_scene_textures(t_scene *scene)
 		if (ft_strncmp(scene->scene_lines[i], "NO ", 3) == 0)
 		{
 			if (scene->no == NULL)
-				scene->no = ft_substr(scene->scene_lines[i], ft_strrchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + 1, ft_strlen(scene->scene_lines[i]));
+				scene->no = ft_substr(scene->scene_lines[i], \
+			ft_strrchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + 1, \
+			ft_strlen(scene->scene_lines[i]));
 			else
 			{
 				throw_err(TEXTURES_INVALID);
@@ -113,7 +119,9 @@ int feed_scene_textures(t_scene *scene)
 		if (ft_strncmp(scene->scene_lines[i], "SO ", 3) == 0)
 		{
 			if (scene->so == NULL)
-				scene->so = ft_substr(scene->scene_lines[i], ft_strrchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + 1, ft_strlen(scene->scene_lines[i]));
+				scene->so = ft_substr(scene->scene_lines[i], \
+			ft_strrchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + 1, \
+			ft_strlen(scene->scene_lines[i]));
 			else
 			{
 				throw_err(TEXTURES_INVALID);
@@ -123,7 +131,9 @@ int feed_scene_textures(t_scene *scene)
 		if (ft_strncmp(scene->scene_lines[i], "WE ", 3) == 0)
 		{
 			if (scene->we == NULL)
-				scene->we = ft_substr(scene->scene_lines[i], ft_strrchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + 1, ft_strlen(scene->scene_lines[i]));
+				scene->we = ft_substr(scene->scene_lines[i], \
+			ft_strrchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + 1, \
+			ft_strlen(scene->scene_lines[i]));
 			else
 			{
 				throw_err(TEXTURES_INVALID);
@@ -133,7 +143,9 @@ int feed_scene_textures(t_scene *scene)
 		if (ft_strncmp(scene->scene_lines[i], "EA ", 3) == 0)
 		{
 			if (scene->ea == NULL)
-				scene->ea = ft_substr(scene->scene_lines[i], ft_strrchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + 1, ft_strlen(scene->scene_lines[i]));
+				scene->ea = ft_substr(scene->scene_lines[i], \
+			ft_strrchr(scene->scene_lines[i], ' ') - scene->scene_lines[i] + 1, \
+			ft_strlen(scene->scene_lines[i]));
 			else
 			{
 				throw_err(TEXTURES_INVALID);
