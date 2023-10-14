@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:37:56 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/12 19:48:44 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/14 14:24:22 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,13 @@ typedef enum e_bool
 
 typedef struct s_player
 {
-	int	x; // quadrante basico
-	int	y; // quadrante basico
-	float px; // posicao real do player
-	float py; // posicao real do player
-	float pdx; // angulo de rotacao da camera
-	float pdy; // angulo de rotacao da camera
-	float pa; // posicao do angulo, radiano
+	int		x;
+	int		y;
+	float	px;
+	float	py;
+	float	pdx;
+	float	pdy;
+	float	pa;
 
 }				t_player;
 
@@ -102,7 +102,6 @@ typedef struct s_img
 	int		color;
 }				t_img;
 
-
 typedef struct s_scene
 {
 	int					fd;
@@ -114,9 +113,9 @@ typedef struct s_scene
 	unsigned int		f;
 	unsigned int		c;
 	char				**map;
-	int 				max_x;
-	int 				max_y;
-	t_player 			*player;
+	int					max_x;
+	int					max_y;
+	t_player			*player;
 }				t_scene;
 
 typedef struct s_sprite
@@ -138,46 +137,46 @@ typedef struct s_input_keys
 }				t_input_keys;
 
 typedef struct s_ray {
-    int        r;
-    int        mx;
-    int        my;
-    int        mp;
-    int        dof;
-    float    rx;
-    float    ry;
-    float    ra;
-    float    xo;
-    float    yo;
-    float    vx;
-    float    vy;
-    float    dis_v;
-    float    dis_h;
-    float    tan;
-    char    eye_v;
-    char    eye_h;
-}                t_ray;
+	int			r;
+	int			mx;
+	int			my;
+	int			mp;
+	int			dof;
+	float		rx;
+	float		ry;
+	float		ra;
+	float		xo;
+	float		yo;
+	float		vx;
+	float		vy;
+	float		dis_v;
+	float		dis_h;
+	float		tan;
+	char		eye_v;
+	char		eye_h;
+}				t_ray;
 
 typedef struct s_ray_print{
-    int        ca;
-    int        line_h;
-    int        line_off;
-    int        color;
-    double    ty;
-    double    tx;
-    double    ty_step;
-    float    ty_off;
-    float    shade;
-}            t_ray_print;
+	int			ca;
+	int			line_h;
+	int			line_off;
+	int			color;
+	double		ty;
+	double		tx;
+	double		ty_step;
+	float		ty_off;
+	float		shade;
+}				t_ray_print;
 
 typedef struct s_game
 {
-	t_img *img;
-	void	*mlx;
-	void	*win;
-	t_sprite *sprites;
-	t_scene *scene;
-	t_input_keys input_keys;
-	t_player *player;
+	t_img			*img;
+	void			*mlx;
+	void			*win;
+	t_sprite		*sprites;
+	t_scene			*scene;
+	t_input_keys	input_keys;
+	t_player		*player;
 }				t_game;
 
 /* Functions */
@@ -198,33 +197,34 @@ int				is_map_walled(t_scene *scene);
 int				are_map_chars_valid(t_scene *scene);
 int				are_map_players_valid(t_scene *scene);
 void			init_game(t_game *game, t_scene *scene);
-float 			deg_to_rad(float deg);
-float 			fix_ang(float ang);
-int key_pressed(int keycode, t_game *game);
-int key_release(int keycode, t_game *game);
-void draw_mini_map(t_game *game, int a, int b, int y);
-int print_view(t_game *game);
-int init_player(t_scene *scene, int i, int j, char direction);
-int	img_init(char *file_path, void *mlx, t_img *img);
-t_sprite *sprite_init(t_game *game);
-void square(t_game *game, int x, int y, int color);
-void horizontal_ray_check(t_game *game, t_ray *ray);
-void vertical_ray_check(t_game *game, t_ray *ray);
-void horizontal_ray_dist(t_game *game, t_ray *ray);
-void vertical_ray_dist(t_game *game, t_ray *ray);
-int	create_trgb(int t, int r, int g, int b);
-void calculate_ray_wall_height(t_game *game, t_ray *ray, t_ray_print *p_ray);
-int    get_sprite_color(int pixel, char *sprite, int shade);
-void verify_shade(t_ray *ray, t_ray_print *p_ray);
-void draw_wall(t_game *game, t_ray *ray, t_ray_print *p_ray);
-void draw_floor_celing(t_game *game, t_ray *ray, t_ray_print *p_ray);
-int    draw_line(t_game *game, int begin[2], int end[2], int color);
-void	cam_rotation(t_game *game);
-int		collision(float p, float pd, t_bool is_sub);
-void	move_front_back(t_game *game);
-void	move_right_left(t_game *game);
-void	move_player(t_game *game);
-int	clean_all(t_game *game);
-void	free_ptr(void **ptr);
+float			deg_to_rad(float deg);
+float			fix_ang(float ang);
+int				key_pressed(int keycode, t_game *game);
+int				key_release(int keycode, t_game *game);
+void			draw_mini_map(t_game *game, int a, int b, int y);
+int				print_view(t_game *game);
+int				init_player(t_scene *scene, int i, int j, char direction);
+int				img_init(char *file_path, void *mlx, t_img *img);
+t_sprite		*sprite_init(t_game *game);
+void			square(t_game *game, int x, int y, int color);
+void			horizontal_ray_check(t_game *game, t_ray *ray);
+void			vertical_ray_check(t_game *game, t_ray *ray);
+void			horizontal_ray_dist(t_game *game, t_ray *ray);
+void			vertical_ray_dist(t_game *game, t_ray *ray);
+int				create_trgb(int t, int r, int g, int b);
+void			calculate_ray_wall_height(t_game *game, t_ray *ray, \
+t_ray_print *p_ray);
+int				get_sprite_color(int pixel, char *sprite, int shade);
+void			verify_shade(t_ray *ray, t_ray_print *p_ray);
+void			draw_wall(t_game *game, t_ray *ray, t_ray_print *p_ray);
+void			draw_floor_celing(t_game *game, t_ray *ray, t_ray_print *p_ray);
+int				draw_line(t_game *game, int begin[2], int end[2], int color);
+void			cam_rotation(t_game *game);
+int				collision(float p, float pd, t_bool is_sub);
+void			move_front_back(t_game *game);
+void			move_right_left(t_game *game);
+void			move_player(t_game *game);
+int				clean_all(t_game *game);
+void			free_ptr(void **ptr);
 
 #endif
