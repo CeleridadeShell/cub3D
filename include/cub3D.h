@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:37:56 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/14 20:00:38 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:14:22 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,5 +227,6 @@ void			move_player(t_game *game);
 int				clean_all(t_game *game);
 void			free_ptr(void **ptr);
 int				are_map_chars_valid_utils(t_scene *scene, size_t i, size_t j);
+void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
 
 #endif

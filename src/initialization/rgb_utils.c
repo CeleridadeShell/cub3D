@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:50:51 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/10/14 19:52:54 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:16:17 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ unsigned int	parse_color(char *RGB)
 	r = ft_substr(RGB, 0, ft_strchr(RGB, ',') - RGB);
 	g = catch_next_color(ft_strchr(RGB, ',') + 1);
 	b = ft_substr(RGB, ft_strrchr(RGB, ',') - RGB + 1, ft_strlen(RGB));
-	if ((ft_atoi(r) > 255 || ft_atoi(g) > 255 || ft_atoi(b) > 255) || (ft_atoi(r) < 0 || ft_atoi(g) < 0 || ft_atoi(b) < 0))
+	if ((ft_atoi(r) > 255 || ft_atoi(g) > 255 || ft_atoi(b) > 255) || \
+	(ft_atoi(r) < 0 || ft_atoi(g) < 0 || ft_atoi(b) < 0))
 	{
 		free_rgb(RGB, r, g, b);
 		return (1 << 31);

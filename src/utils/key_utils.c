@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   key_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 21:23:51 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/12 19:48:05 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:04:32 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-int key_pressed(int keycode, t_game *game)
+int	key_pressed(int keycode, t_game *game)
 {
 	if (keycode == KEY_W)
 		game->input_keys.w = TRUE;
 	if (keycode == KEY_S)
-		game->input_keys.s =TRUE;
+		game->input_keys.s = TRUE;
 	if (keycode == KEY_D)
 		game->input_keys.d = TRUE;
 	if (keycode == KEY_A)
@@ -29,14 +29,14 @@ int key_pressed(int keycode, t_game *game)
 	return (0);
 }
 
-int key_release(int keycode, t_game *game)
+int	key_release(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
 		clean_all(game);
 	if (keycode == KEY_W)
 		game->input_keys.w = FALSE;
 	if (keycode == KEY_S)
-		game->input_keys.s =FALSE;
+		game->input_keys.s = FALSE;
 	if (keycode == KEY_D)
 		game->input_keys.d = FALSE;
 	if (keycode == KEY_A)
