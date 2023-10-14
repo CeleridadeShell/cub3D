@@ -6,7 +6,7 @@
 /*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:39:48 by christian         #+#    #+#             */
-/*   Updated: 2023/10/14 16:42:54 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:55:46 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ int	main(int argc, char **argv)
 {
 	t_scene	scene;
 
-	if (!is_param_valid(argc, argv) || !is_scene_valid(argv[1], &scene))
+	if (!is_param_valid(argc, argv))
+		exit(1);
+	if (!is_scene_valid(argv[1], &scene))
 	{
 		close_scene(&scene);
 		exit(1);

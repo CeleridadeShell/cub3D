@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/20 19:31:21 by mcarecho          #+#    #+#              #
-#    Updated: 2023/10/12 19:48:53 by mcarecho         ###   ########.fr        #
+#    Updated: 2023/10/14 17:20:15 by ccamargo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,8 @@ SRC				=	main.c \
 					initialization/scene_initialization.c \
 					initialization/game_initialization.c \
 					initialization/feed_textures_and_colors.c \
+					initialization/feed_textures_and_colors_2.c \
+					initialization/feed_textures_and_colors_3.c \
 					initialization/rgb_funcs.c \
 					initialization/rgb_utils.c \
 					initialization/feed_map.c \

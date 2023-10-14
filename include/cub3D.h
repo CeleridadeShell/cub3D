@@ -6,7 +6,7 @@
 /*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:37:56 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/14 16:14:22 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/10/14 17:20:06 by ccamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,8 +184,10 @@ void			throw_err(int err);
 int				is_param_valid(int argc, char **argv);
 int				is_scene_valid(char *map_path, t_scene *scene);
 int				initialize_scene(t_scene *scene, char *map_path);
+int				check_textures_exist(t_scene *scene);
 int				feed_scene_textures(t_scene *scene);
 int				feed_scene_floor_and_celling(t_scene *scene);
+int				final_scene_checks(t_scene *scene);
 void			close_scene(t_scene *scene);
 int				create_rgb(int r, int g, int b);
 int				get_r(int rgb);
