@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:38:44 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/10/14 19:58:41 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/15 21:07:16 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static int	is_map_last_element(t_scene *scene)
 			return (0);
 		j++;
 	}
+	if (scene->scene_lines[i][0] == '\0')
+		return(0);
 	return (1);
 }
 
@@ -56,7 +58,7 @@ static void	find_beginning_of_map(t_scene *scene, int *i, int *j)
 	}
 }
 
-static void	extract_map(t_scene *scene)
+static int	extract_map(t_scene *scene)
 {
 	int	i;
 	int	j;
@@ -76,6 +78,7 @@ static void	extract_map(t_scene *scene)
 	}
 	scene->max_y = j;
 	scene->max_x = ft_strlen(scene->map[0]);
+	return (j);
 }
 
 int	feed_scene_map(t_scene *scene)
@@ -85,8 +88,12 @@ int	feed_scene_map(t_scene *scene)
 		throw_err(MAP_NOT_LAST);
 		return (0);
 	}
-	extract_map(scene);
-	if (!is_map_walled(scene))
+	if (extract_map(scene) <5)
+	{	
+		throw_err(MAP_CHARS_NOT_VALID);
+		return (0);
+	}
+	if (!is_map_walled(scene) )
 	{
 		throw_err(MAP_NOT_WALLED);
 		return (0);

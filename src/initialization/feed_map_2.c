@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 14:00:17 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/10/15 19:56:12 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/15 21:06:40 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static int	check_vertical_walls(t_scene *scene, int map_len)
 	i = 1;
 	while (i < map_len - 1)
 	{
-		if ((scene->map[i][0] != '1' || scene->map[i][0] != ' ') 
-		&& (scene->map[i][ft_strlen(scene->map[i]) - 1] != '1' ||
+		if ((scene->map[i][0] != '1' && scene->map[i][0] != ' ') 
+		|| (scene->map[i][ft_strlen(scene->map[i]) - 1] != '1' &&
 		scene->map[i][ft_strlen(scene->map[i]) - 1] != ' ') )
 			return (0);
 		i++;
@@ -109,7 +109,7 @@ int	are_map_players_valid(t_scene *scene)
 		}
 		i++;
 	}
-	if (vpc_count > 1)
+	if (vpc_count != 1)
 		return (0);
 	return (1);
 }

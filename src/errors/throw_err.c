@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   throw_err.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 22:42:11 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/09/07 19:23:17 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/10/15 20:59:15 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,6 @@ to open!\n");
 		ft_printf("Minilib's windows failed to load!\n");
 	if (err == MINILIB_FAILED_SPRITE)
 		ft_printf("Minilib failed to load sprites\n");
+	if (err == END_LINE_INVALID)
+		ft_printf("The map must end without a line break\n");
 }

@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:37:56 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/15 19:46:17 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/15 20:55:46 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@
 # define MAP_PLAYERS_NOT_VALID 9
 # define MINILIB_FAILED_WINDOW 10
 # define MINILIB_FAILED_SPRITE 11
+# define END_LINE_INVALID 12
 # define VALID_CHARS "10NSEW "
 # define VALID_PLAYER_CHARS "NSEW"
 # define VALID_CHAR_0 "10NSEW"
