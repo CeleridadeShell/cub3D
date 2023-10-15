@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:38:44 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/10/15 21:07:16 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/15 21:18:45 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	feed_scene_map(t_scene *scene)
 		throw_err(MAP_NOT_LAST);
 		return (0);
 	}
-	if (extract_map(scene) <5)
+	if (extract_map(scene) < 3)
 	{	
 		throw_err(MAP_CHARS_NOT_VALID);
 		return (0);

@@ -33,6 +33,7 @@ static void	clean_all_2(t_game *game)
 	free_ptr((void **)&game->sprites->we);
 	free_ptr((void **)&game->sprites->no);
 	free_ptr((void **)&game->sprites);
+	free_ptr((void **)&game->img);
 	mlx_destroy_window(game->mlx, game->win);
 	mlx_destroy_display(game->mlx);
 	free_ptr((void **)&game->mlx);
@@ -40,14 +41,7 @@ static void	clean_all_2(t_game *game)
 
 int	clean_all(t_game *game)
 {
-	free_ptr((void **)&game->scene->no);
-	free_ptr((void **)&game->scene->so);
-	free_ptr((void **)&game->scene->we);
-	free_ptr((void **)&game->scene->ea);
-	free_ptr((void **)&game->scene->player);
-	while (game->scene->map != NULL && --game->scene->max_y >= 0)
-		free_ptr((void **)&game->scene->map[game->scene->max_y]);
-	free_ptr((void **)&game->scene->map);
+	close_scene(game->scene);
 	if (game->mlx != NULL)
 		clean_all_2(game);
 	exit (0);

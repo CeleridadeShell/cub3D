@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 21:46:33 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/10/14 16:56:33 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/10/15 21:42:14 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	close_scene(t_scene *scene)
 {
 	free_scene_lines(scene);
 	free_map(scene);
+	free_ptr((void **)&scene->player);
 	free_ptr((void **)&scene->no);
 	free_ptr((void **)&scene->so);
 	free_ptr((void **)&scene->we);
