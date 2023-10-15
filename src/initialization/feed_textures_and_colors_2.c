@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   feed_textures_and_colors_2.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mcarecho <mcarecho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 17:09:03 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/10/14 17:19:01 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:33:58 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,5 @@ int	feed_scene_textures(t_scene *scene)
 			return (0);
 		i++;
 	}
-	final_scene_checks(scene);
-	return (1);
+	return (final_scene_checks(scene));
 }

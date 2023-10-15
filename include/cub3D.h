@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccamargo <ccamargo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:37:56 by mcarecho          #+#    #+#             */
-/*   Updated: 2023/10/14 17:20:06 by ccamargo         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:46:17 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@
 # define VALID_CHARS "10NSEW "
 # define VALID_PLAYER_CHARS "NSEW"
 # define VALID_CHAR_0 "10NSEW"
+# define VALID_CHAR_V "0NSEW"
 # define MAP_X 800
 # define MAP_Y 600
 # define MAP_S 64 // tamanho da sprite

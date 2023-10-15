@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 14:00:17 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/10/14 20:00:29 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:56:12 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,9 @@ static int	check_vertical_walls(t_scene *scene, int map_len)
 	i = 1;
 	while (i < map_len - 1)
 	{
-		if (scene->map[i][0] != '1' && \
-		scene->map[i][ft_strlen(scene->map[i]) - 1] != '1' &&
-				scene->map[i][0] != ' ' && \
-		scene->map[i][ft_strlen(scene->map[i]) - 1] != ' ' )
+		if ((scene->map[i][0] != '1' || scene->map[i][0] != ' ') 
+		&& (scene->map[i][ft_strlen(scene->map[i]) - 1] != '1' ||
+		scene->map[i][ft_strlen(scene->map[i]) - 1] != ' ') )
 			return (0);
 		i++;
 	}
@@ -71,10 +70,12 @@ int	are_map_chars_valid_utils(t_scene *scene, size_t i, size_t j)
 {
 	if (!ft_strchr(VALID_CHARS, scene->map[i][j]))
 		return (0);
-	if (scene->map[i][j] == '0' && (ft_strlen(scene->map[i - 1]) < j
-									|| ft_strlen(scene->map[i + 1]) < j))
+	if (ft_strchr(VALID_CHAR_V, scene->map[i][j]) 
+				&& (ft_strlen(scene->map[i - 1]) < j + 1
+				|| ft_strlen(scene->map[i + 1]) < j + 1
+				||  ft_strlen(scene->map[i]) == j + 1))
 		return (0);
-	if (scene->map[i][j] == '0' && (!ft_strchr(VALID_CHAR_0,
+	if (ft_strchr(VALID_CHAR_V, scene->map[i][j]) && (!ft_strchr(VALID_CHAR_0,
 						scene->map[i - 1][j]) || !ft_strchr(VALID_CHAR_0,
 						scene->map[i + 1][j]) || !ft_strchr(VALID_CHAR_0,
 						scene->map[i][j - 1]) || !ft_strchr(VALID_CHAR_0,
