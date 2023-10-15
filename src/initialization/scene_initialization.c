@@ -6,7 +6,7 @@
 /*   By: mcarecho <mcarecho@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 21:28:33 by ccamargo          #+#    #+#             */
-/*   Updated: 2023/10/15 21:45:51 by mcarecho         ###   ########.fr       */
+/*   Updated: 2023/10/15 21:52:42 by mcarecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static int	open_fd(t_scene *scene, char *map_path)
 static int	count_lines(t_scene *scene, char *map_path, int line_count)
 {
 	char	*gnl_line;
-	t_bool  b;
-	
+	t_bool	b;
+
 	b = TRUE;
 	if (!open_fd(scene, map_path))
 		return (-1);
@@ -43,7 +43,7 @@ static int	count_lines(t_scene *scene, char *map_path, int line_count)
 	}
 	ft_freethis(&gnl_line, NULL);
 	close(scene->fd);
-	if(b == TRUE)
+	if (b == TRUE)
 		return (-1);
 	return (line_count);
 }
